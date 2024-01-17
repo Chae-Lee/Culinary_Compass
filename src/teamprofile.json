@@ -1,0 +1,34 @@
+[
+  {
+    "id":1,
+    "name":"Louise Elliot",
+    "occupation":"Software Engineer",
+    "image":"https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+    "description":"Enter information here",
+    "github":"Enter URL to your Github"
+  },
+  {
+    "id":2,
+    "name":"Dan Whitlock",
+    "occupation":"Software Engineer",
+    "image":"https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+    "description":"Enter information here",
+    "github":"Enter URL to your Github"
+  },
+  {
+    "id":3,
+    "name":"Dan Green",
+    "occupation":"Software Engineer",
+    "image":"https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+    "description":"Enter information here",
+    "github":"Enter URL to your Github"
+  },
+  {
+    "id":4,
+    "name":"Kate Lee",
+    "occupation":"Software Engineer",
+    "image":"https://static.wikia.nocookie.net/wii/images/8/89/Pikachu.jpg/revision/latest?cb=20140209205851",
+    "description":"Enter information here",
+    "github":"Enter URL to your Github"
+  }
+]

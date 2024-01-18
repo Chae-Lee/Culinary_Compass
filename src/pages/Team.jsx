@@ -1,39 +1,6 @@
 import React from "react";
-// import teamprofile from "../teamprofile.json";
+import teamprofile from "../teamprofile.json";
 import { Link } from "react-router-dom";
-
-    // Placeholder only - we will reference our json file
-    const teamprofile = [
-        {
-            name: 'Dan Whitlock',
-            role: 'Co-Founder / CEO',
-            imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-        {
-            name: 'Daniel Green',
-            role: 'Co-Founder / CEO',
-            imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-        {
-            name: 'Kate Lee',
-            role: 'Co-Founder / CEO',
-            imageUrl:
-            'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-        },
-        {
-            id:1,
-            name:"Louise Elliott",
-            occupation:"Software Engineer",
-            image:"images/louiseElliott.jpg",
-            description:"Front End Web Developer with a background in education and non-governmental organisations. Driven and always keen to learn and adapt. Effective at problem-solving, identifying areas for improvements and supporting colleagues with up-skilling and implementing change. Fluent in Spanish. Proficient in French. Known as a conscientious professional with a keen eye for detail and a passion for making a difference.",
-            github:"https://github.com/louise-elliott-work",
-            linkedin: "https://www.linkedin.com/in/louise-elliott-work/"
-        }
-    ]
-    
-
 
 // Meet The Team page.
 function MeetTheTeam() {
@@ -66,10 +33,4 @@ function MeetTheTeam() {
     )
 };
 
-export default MeetTheTeam;  
-
-
-
-
-
-
+export default MeetTheTeam;

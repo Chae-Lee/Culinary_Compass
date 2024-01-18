@@ -1,6 +1,7 @@
 import { Fragment, useRef, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+import { GlobeEuropeAfricaIcon } from '@heroicons/react/24/outline'
+
 
 export default function Example() {
   const [open, setOpen] = useState(true)
@@ -19,7 +20,7 @@ export default function Example() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-red-400 bg-opacity-75 transition-opacity" />
+          <div className="fixed inset-0 bg-gray-400 bg-opacity-75 transition-opacity" />
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
@@ -36,38 +37,36 @@ export default function Example() {
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                 <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                   <div className="sm:flex sm:items-start">
-                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                      <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
+                    <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 sm:mx-0 sm:h-10 sm:w-10">
+                      <GlobeEuropeAfricaIcon className="h-6 w-6 text-black-600" aria-hidden="true" />
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                        Deactivate text
+                      Culinary Compass
                       </Dialog.Title>
                       <div className="mt-2">
-                        <p className="text-sm text-red-500">
-                          Are you sure you want to deactivate your account? All of your data will be permanently
-                          removed. This action cannot be undone.
+                        <p className="text-lg text-grey-500 py-2">    
+                        Welcome to Culinary Compass, your passport to global culinary excellence. 
+                        Our elegant website lets you effortlessly discover Michelin-star restaurants worldwide. 
+                        </p>
+                        <p className='text-lg text-grey-500 py-2'>
+                        Refine your search by cuisine, location, and star rating for a personalized dining adventure. 
+                        From Tokyo to Paris, explore top-notch establishments with sophistication and excitement. 
+                        Culinary Compass invites you to savor unforgettable flavors in a seamless, welcoming experience.
                         </p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row justify-center sm:px-6">
                   <button
                     type="button"
-                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
+                    className="flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     onClick={() => setOpen(false)}
                   >
-                    Deactivate
+                    Explore
                   </button>
-                  <button
-                    type="button"
-                    className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => setOpen(false)}
-                    ref={cancelButtonRef}
-                  >
-                    Cancel
-                  </button>
+              
                 </div>
               </Dialog.Panel>
             </Transition.Child>

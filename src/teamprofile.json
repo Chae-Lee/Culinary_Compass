@@ -1,10 +1,10 @@
 [
   {
     "id":1,
-    "name":"Louise Elliot",
+    "name":"Louise Elliott",
     "occupation":"Software Engineer",
     "image":"images/louiseElliott.jpg",
-    "description":"Front End Web Developer with a background in education and non-governmental organisations. Driven and always keen to learn and adapt. Effective at problem-solving, identifying areas for improvements and supporting colleagues with up-skilling and implementing change. Fluent in Spanish. Proficient in French. Known as a conscientious professional with a keen eye for detail and a passion for making a difference.",
+    "description":"Front End Web Developer with a background in education and non-governmental organisations. Driven and always keen to learn and adapt. Effective at problem-solving, identifying areas for improvements and supporting colleagues with up-skilling and implementing change. Fluent in Spanish. Known as a conscientious professional with a keen eye for detail and a passion for making a difference.",
     "github":"https://github.com/louise-elliott-work",
     "linkedin": "https://www.linkedin.com/in/louise-elliott-work/"
   },

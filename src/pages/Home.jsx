@@ -1,11 +1,11 @@
 import React from "react";
-import Example from "./components/WelcomeModal";
+import WelModal from "./components/WelcomeModal";
 
 // Home page.
 function Home() {
     return (
         <div>
-            <Example />
+            <WelModal />
             <h1>Home placeholder</h1>
         </div>
     )

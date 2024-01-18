@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react'
 import { GlobeEuropeAfricaIcon } from '@heroicons/react/24/outline'
 
 
-export default function Example() {
+export default function WelModal() {
   const [open, setOpen] = useState(true)
 
   const cancelButtonRef = useRef(null)

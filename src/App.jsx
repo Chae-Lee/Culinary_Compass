@@ -7,7 +7,7 @@ import ContactUs from "./pages/Contact.jsx";
 // Top-level component, rendering all child components, with Home set as default page.
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
+    <div>
       <Router>
          {/* Header visible across all pages */}
         <NavBar />

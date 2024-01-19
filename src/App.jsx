@@ -2,13 +2,13 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import NavBar from "./NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import Team from "./pages/Team.jsx";
-import Contact from "./pages/Contact.jsx";
+import ContactUs from "./pages/Contact.jsx";
 import UserLocation from "./UserLocation.jsx";
 
 // Top-level component, rendering all child components, with Home set as default page.
 function App() {
   return (
-    <div className="text-3xl font-bold underline">
+    <div>
       <Router>
         {/* Header visible across all pages */}
         <UserLocation />
@@ -17,7 +17,7 @@ function App() {
           {/* Different paths set to be rendered, with Home set as the default */}
           <Route path="/" element={<Home />} />
           <Route path="team" element={<Team />} />
-          <Route path="contact" element={<Contact />} />
+          <Route path="contact" element={<ContactUs />} />
         </Routes>
       </Router>
     </div>

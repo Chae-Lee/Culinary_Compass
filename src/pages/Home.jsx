@@ -1,58 +1,67 @@
 import React from "react";
-import WelModal from "./components/WelcomeModal";
+// import WelModal from "./components/WelcomeModal";
 
 const people = [
+    
     {
-      name: 'Leslie Alexander',
-      email: 'leslie.alexander@example.com',
-      role: 'Co-Founder / CEO',
+      name: 'LOSIER',
       imageUrl:
-        'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: '3h ago',
-      lastSeenDateTime: '2023-01-23T13:23Z',
+        'https://images.unsplash.com/photo-1621327017866-6fb07e6c96ea?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Tokyo",
+      Country: "Japan",
+      Cuisine: "French, Contemporary",
+      Award: "3 Stars",
+      Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/l-osier",
     },
     {
-      name: 'Michael Foster',
-      email: 'michael.foster@example.com',
-      role: 'Co-Founder / CTO',
+      name: 'Azabu Kadowaki',
       imageUrl:
-        'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: '3h ago',
-      lastSeenDateTime: '2023-01-23T13:23Z',
+        'https://plus.unsplash.com/premium_photo-1674062989120-4ccc0eb35be0?q=80&w=3387&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Tokyo",
+      Country: "Japan",
+      Cuisine: "Japanese",
+      Award: "3 Stars",
+      Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/azabu-kadowaki",
     },
     {
-      name: 'Dries Vincent',
-      email: 'dries.vincent@example.com',
-      role: 'Business Relations',
+      name: 'Schloss Schauenstein',
       imageUrl:
-        'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: null,
+        'https://images.unsplash.com/photo-1625938146357-754891591b16?q=80&w=3397&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Fürstenau",
+      Country: "Switzerland",
+      Cuisine: "Creative, Country cooking",
+      Award: "3 Stars, Green Star",
+      Url: "https://guide.michelin.com/en/graubunden/frstenau/restaurant/schloss-schauenstein",
     },
     {
-      name: 'Lindsay Walton',
-      email: 'lindsay.walton@example.com',
-      role: 'Front-end Developer',
+      name: 'JAN',
       imageUrl:
-        'https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: '3h ago',
-      lastSeenDateTime: '2023-01-23T13:23Z',
+        'https://images.unsplash.com/photo-1542444256-164bd32f11fc?q=80&w=3405&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Munich",
+      Country: "Germany",
+      Cuisine: "Creative, Modern Cuisine",
+      Award: "3 Stars",
+      Url: "https://guide.michelin.com/en/bayern/mnchen/restaurant/jan-1204321",
     },
     {
-      name: 'Courtney Henry',
-      email: 'courtney.henry@example.com',
-      role: 'Designer',
+      name: 'Fat Duck',
       imageUrl:
-        'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: '3h ago',
-      lastSeenDateTime: '2023-01-23T13:23Z',
+        'https://images.unsplash.com/photo-1501595091296-3aa970afb3ff?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Bray",
+      Country: "United Kingdom",
+      Cuisine: "Creative",
+      Award: "3 Stars",
+      Url: "https://guide.michelin.com/en/windsor-and-maidenhead/bray/restaurant/fat-duck",
     },
     {
-      name: 'Tom Cook',
-      email: 'tom.cook@example.com',
-      role: 'Director of Product',
+      name: 'Enoteca Paco Pérez',
       imageUrl:
-        'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
-      lastSeen: null,
+        'https://images.unsplash.com/photo-1621841957884-1210fe19d66d?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      Location: "Barcelona",
+      Country: "Spain",
+      Cuisine: "Spanish",
+      Award: "2 Stars",
+      Url: "https://guide.michelin.com/en/catalunya/barcelona/restaurant/enoteca204150",
     },
   ]
 
@@ -60,7 +69,7 @@ const people = [
 function Home() {
     return (
         <div>
-            <WelModal />
+            {/* <WelModal /> */}
             <div className="overflow-hidden bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
@@ -73,12 +82,29 @@ function Home() {
                             iste dolor cupiditate blanditiis ratione.
                         </p>
                     </div>
-                    <div className="mt-10 flex flex-col gap-x-6">
+                    <div className="mt-2 flex flex-col gap-x-6">
                         <a
                             href="#"
-                            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-32"
+                            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
                         >
-                            Random Pick
+                            Random ⭐⭐⭐
+                        </a>
+                    </div>
+                    <div className="mt-2 flex flex-col gap-x-6">
+                        <a
+                            href="#"
+                            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
+                        >
+                            Random ⭐⭐
+                        </a>
+                    </div>
+
+                    <div className=" mt-2 flex flex-col gap-x-6">
+                        <a
+                            href="#"
+                            className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
+                        >
+                            Random ⭐
                         </a>
                     </div>
 
@@ -128,28 +154,21 @@ function Home() {
                 <div>
                     <ul role="list" className="divide-y divide-gray-100">
                         {people.map((person) => (
-                            <li key={person.email} className="flex justify-between gap-x-6 py-5">
+                            <li key={person.name} className="flex justify-between gap-x-6 py-5">
                             <div className="flex min-w-0 gap-x-4">
-                                <img className="h-12 w-12 flex-none rounded-full bg-gray-50" src={person.imageUrl} alt="" />
+                                
+                                <img className="h-24 w-24 flex-none rounded-md bg-gray-50" src={person.imageUrl} alt="" />
+                                
                                 <div className="min-w-0 flex-auto">
                                 <p className="text-sm font-semibold leading-6 text-gray-900">{person.name}</p>
-                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.email}</p>
+                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Cuisine}</p>
+                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Award}</p>
+                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Url}</p>
                                 </div>
                             </div>
                             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">{person.role}</p>
-                                {person.lastSeen ? (
-                                <p className="mt-1 text-xs leading-5 text-gray-500">
-                                    Last seen <time dateTime={person.lastSeenDateTime}>{person.lastSeen}</time>
-                                </p>
-                                ) : (
-                                <div className="mt-1 flex items-center gap-x-1.5">
-                                    <div className="flex-none rounded-full bg-emerald-500/20 p-1">
-                                    <div className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-                                    </div>
-                                    <p className="text-xs leading-5 text-gray-500">Online</p>
-                                </div>
-                                )}
+                                <p className="text-sm leading-6 text-gray-900">{person.Location}</p>
+                                <p className="mt-1 text-xs leading-5 text-gray-500">{person.Country}</p>
                             </div>
                             </li>
                         ))}

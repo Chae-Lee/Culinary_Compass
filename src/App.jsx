@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <Router>
-         {/* Header visible across all pages */}
+        {/* Header visible across all pages */}
         <NavBar />
         <WelModal />
         <Routes>

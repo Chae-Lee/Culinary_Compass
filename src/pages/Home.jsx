@@ -1,5 +1,6 @@
 import React from "react";
 import WelModal from "./components/WelcomeModal";
+import RestCard from "./components/RestaurantsCard";
 
 const people = [
     {
@@ -60,6 +61,7 @@ const people = [
 function Home() {
     return (
         <div>
+          <RestCard />
             <WelModal />
             <div className="overflow-hidden bg-white py-24 sm:py-32">
             <div className="mx-auto max-w-7xl px-6 lg:px-8">

@@ -79,7 +79,7 @@ function UserLocation() {
                     type="button"
                     className="flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
                     onClick={() => {
-                      getUserLocation();
+                      getUserLocation(); //need to add the functionality to have 'allow' and 'deny' option & get it to display only after one of the search buttons are selected.
                     }}
                   >
                     Yes

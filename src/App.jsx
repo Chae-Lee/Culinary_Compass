@@ -9,7 +9,7 @@ function App() {
   return (
     <div>
       <Router>
-         {/* Header visible across all pages */}
+        {/* Header visible across all pages */}
         <NavBar />
         <Routes>
           {/* Different paths set to be rendered, with Home set as the default */}

@@ -11,7 +11,7 @@ function App() {
     <div>
       <Router>
         {/* Header visible across all pages */}
-        <UserLocation />
+        {/* <UserLocation /> */}
         <NavBar />
         <Routes>
           {/* Different paths set to be rendered, with Home set as the default */}

@@ -1,9 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect, Fragment, useRef } from "react";
+import { Dialog, Transition } from "@headlessui/react";
 
 function UserLocation() {
-  const [userLocation, setUserLocation] = useState(null);
+  const [userLocation, setUserLocation] = useState("");
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -19,50 +19,97 @@ function UserLocation() {
       console.error("Geolocation is not supported by this browser");
     }
   };
+
+  const [open, setOpen] = useState(true);
+
+  const cancelButtonRef = useRef(null);
+
   return (
-    <div>
-      <p>User Location </p>
-      <button onClick={getUserLocation}>Get User Location</button>
-      {userLocation == null ? (
-        <p> No user information given </p>
-      ) : (
-        <div>
-          <p> Latitude : {userLocation.latitude}</p>{" "}
-          <p>Longitude: {userLocation.longitude}</p>
+    <Transition.Root show={open} as={Fragment}>
+      <Dialog
+        as="div"
+        className="relative z-10"
+        initialFocus={cancelButtonRef}
+        onClose={setOpen}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <div className="fixed inset-0 bg-gray-400 bg-opacity-75 transition-opacity" />
+        </Transition.Child>
+
+        <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+            <Transition.Child
+              as={Fragment}
+              enter="ease-out duration-300"
+              enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              enterTo="opacity-100 translate-y-0 sm:scale-100"
+              leave="ease-in duration-200"
+              leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+              leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+            >
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+                <div className="bg-white px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
+                  <div className="sm:flex sm:items-start">
+                    <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
+                      <Dialog.Title
+                        as="h3"
+                        className="text-base font-semibold leading-6 text-gray-900"
+                      >
+                        Culinary Compass
+                      </Dialog.Title>
+                      <div className="mt-2">
+                        <p className="text-lg text-grey-500 py-2">
+                          Allow <bold>Culinary Compass</bold> to access this
+                          device's location?
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row justify-center sm:px-6">
+                  <button
+                    type="button"
+                    className="flex w-full justify-center rounded-md bg-blue-300 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 sm:ml-3 sm:w-auto"
+                    onClick={() => {
+                      getUserLocation();
+                    }}
+                  >
+                    Yes
+                  </button>
+                </div>
+              </Dialog.Panel>
+            </Transition.Child>
+          </div>
         </div>
-      )}
-      {/* <p>Latitude: {userLocation.latitude}</p>
-      <p>Longitude: {userLocation.longitude}</p> */}
-    </div>
+      </Dialog>
+    </Transition.Root>
   );
 }
 
-// function UserLocation() {
-//   const [lat, setLat] = useState(null);
-//   const [long, setLong] = useState(null);
-
-//   const getUserCoordinates = () => {
-//     if (!geolocationAPI) {
-//       setError("Geolocation API is not available in your browser");
-//     } else {
-//       geolocationAPI.getCurrentPositions(
-//         (position) => {
-//           const { coords } = position;
-//           setLat(coords.latitude);
-//           setLong(coords.longitude);
-//         },
-//         (error) => {
-//           setError("Something went wrong getting your location ");
-//         }
-//       );
-//     }
-//   };
-//   return (
-//     <div className="UserLocation">
-//       <p> Your coordinates are: {[lat, long]} </p>
-//       <p>{getUserCoordinates()}</p>
-//     </div>
-//   );
-// }
+// {/* <div>
+// <p>User Location </p>
+// {/* <button onClick={getUserLocation}>Get User Location</button> */}
+// {/* {userLocation == null ? (
+//   <p> No user information given </p>
+// ) : ( */}
+// {getUserLocation()}
+// <div>
+//   <p> Latitude : {userLocation.latitude}</p>{" "}
+//   <p>Longitude: {userLocation.longitude}</p>
+// </div>
+// {/* )} */}
+// {/* <p>Latitude: {userLocation.latitude}</p>
+// <p>Longitude: {userLocation.longitude}</p> */}
+// </div>
+// );
+// } */}
 
 export default UserLocation;

@@ -3,14 +3,16 @@ import NavBar from "./NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import Team from "./pages/Team.jsx";
 import ContactUs from "./pages/Contact.jsx";
+import WelModal from "./pages/components/WelcomeModal";
 
 // Top-level component, rendering all child components, with Home set as default page.
 function App() {
   return (
     <div>
       <Router>
-         {/* Header visible across all pages */}
+        {/* Header visible across all pages */}
         <NavBar />
+        <WelModal />
         <Routes>
           {/* Different paths set to be rendered, with Home set as the default */}
           <Route path="/" element={<Home />} />

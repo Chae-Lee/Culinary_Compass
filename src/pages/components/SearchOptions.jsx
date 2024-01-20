@@ -24,8 +24,8 @@ export default function SearchOptions() {
             </div>
 
 {/* COUNTRY SEARCH */}
-
-            <div>
+            <ComboBox />
+            {/* <div>
                 <div className="mt-4">
                     <label htmlFor="first-name" className="block text-sm font-semibold leading-6 text-gray-900">
                     Country Selection
@@ -41,8 +41,8 @@ export default function SearchOptions() {
                     placeholder="Start typing..."
                 />
                 </div>  
-            </div>
-            <ComboBox />
+            </div> */}
+
 {/* NEAR ME */}
 
             <div className="flex flex-col gap-2 mt-8">

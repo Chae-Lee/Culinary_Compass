@@ -14,13 +14,13 @@ function App() {
         {/* Header visible across all pages */}
         <NavBar />
         <WelModal />
-        <Footer />
         <Routes>
           {/* Different paths set to be rendered, with Home set as the default */}
           <Route path="/" element={<Home />} />
           <Route path="team" element={<Team />} />
           <Route path="contact" element={<ContactUs />} />
         </Routes>
+        <Footer />
       </Router>
     </div>
   );

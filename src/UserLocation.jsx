@@ -1,32 +1,45 @@
 import React from "react";
-import { Fragment, useRef, useState } from "react";
+import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 
 // Function to obtain user's current geolocation when the "Allow" button on the dialog box is clicked.
 function UserLocation() {
-  handleClick = () => {
-    const [userLocation, setUserLocation] = useState("");
-    const getUserLocation = () => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          (position) => {
-            const { latitude, longitude } = position.coords;
-            setUserLocation({ latitude, longitude });
-          },
-          (error) => {
-            setError("Something went wrong getting your location");
-          }
-        );
-      } else {
-        console.error("Geolocation is not supported by this browser");
-      }
-    };
+  const [open, setOpen] = useState(true);
+  const cancelButtonRef = useRef(null);
+  const [userLocation, setUserLocation] = useState(null);
+
+  useEffect(() => {
+    if (userLocation && userLocation.latitude && userLocation.longitude) {
+      console.log("Latitude:", userLocation.latitude);
+      console.log("Longitude:", userLocation.longitude);
+    }
+  }, [userLocation]);
+
+  const handleClick = () => {
+    if (!userLocation) {
+      getUserLocation();
+    }
+    setOpen(false);
   };
 
-  const [open, setOpen] = useState(true);
-
-  const cancelButtonRef = useRef(null);
+  const getUserLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation({ latitude, longitude });
+        },
+        (error) => {
+          setError("Something went wrong getting your location");
+          setUserLocation(null);
+        }
+      );
+    } else {
+      console.error("Geolocation is not supported by this browser");
+      setUserLocation(null);
+    }
+  };
 
   return (
     //Dialog box for obtaining user's consent to share their current location
@@ -87,7 +100,10 @@ function UserLocation() {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
-                    onClick={(handleClick) => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      handleClick();
+                    }}
                   >
                     Allow
                   </button>

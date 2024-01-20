@@ -8,7 +8,7 @@ function Home() {
     return (
     <div>
         {/* Modal was here */}
-        <div className="overflow-hidden bg-white py-24 sm:py-32">
+        <div className="overflow-hidden bg-white py-24 sm:py-24">
           <div className="mx-auto max-w-7xl px-6 lg:px-8">
                 
                 {/* Sets the two column grid container */} 

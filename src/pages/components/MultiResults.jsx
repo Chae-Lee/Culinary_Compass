@@ -11,7 +11,7 @@ const testData = [
       Location: "Tokyo",
       Country: "Japan",
       Cuisine: "French, Contemporary",
-      Award: "/public/images/michelin-three.png",
+      Award: "/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/l-osier",
     },
     {
@@ -21,7 +21,7 @@ const testData = [
       Location: "Tokyo",
       Country: "Japan",
       Cuisine: "Japanese",
-      Award: "/public/images/michelin-three.png",
+      Award: "/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/azabu-kadowaki",
     },
     {
@@ -31,7 +31,7 @@ const testData = [
       Location: "Fürstenau",
       Country: "Switzerland",
       Cuisine: "Creative, Country Cooking",
-      Award: "/public/images/michelin-three-green.png",
+      Award: "/images/michelin-three-green.png",
       Url: "https://guide.michelin.com/en/graubunden/frstenau/restaurant/schloss-schauenstein",
     },
     {
@@ -41,7 +41,7 @@ const testData = [
       Location: "Munich",
       Country: "Germany",
       Cuisine: "Creative, Modern Cuisine",
-      Award: "/public/images/michelin-three.png",
+      Award: "/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/bayern/mnchen/restaurant/jan-1204321",
     },
     {
@@ -51,7 +51,7 @@ const testData = [
       Location: "Bray",
       Country: "United Kingdom",
       Cuisine: "Creative",
-      Award: "/public/images/michelin-three.png",
+      Award: "/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/windsor-and-maidenhead/bray/restaurant/fat-duck",
     },
     {
@@ -61,7 +61,7 @@ const testData = [
       Location: "Barcelona",
       Country: "Spain",
       Cuisine: "Spanish",
-      Award: "/public/images/michelin-two.png",
+      Award: "/images/michelin-two.png",
       Url: "https://guide.michelin.com/en/catalunya/barcelona/restaurant/enoteca204150",
     },
   ]

@@ -1,4 +1,5 @@
 import React from 'react';
+import michelin from '../../michelin.json'
 
 function SingleResultCard() {
   return (
@@ -34,7 +35,7 @@ function SingleResultCard() {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                Restaurant Name</h3>
+                {michelin[0].Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
                 eget aliquam. Quisque id at vitae feugiat egestas.

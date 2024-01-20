@@ -1,6 +1,16 @@
 import React from 'react';
 import michelin from '../../michelin.json'
 
+function starFunction(n) {
+    if(michelin[n].Award === "3 Stars"){
+        return "⭐⭐⭐"
+     } else if (michelin[n].Award === "2 Stars"){
+        return "⭐⭐"
+     } else {
+        return "⭐"
+     }
+    }
+
 function SingleResultCard() {
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -37,8 +47,13 @@ function SingleResultCard() {
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {michelin[0].Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                Aliquet nec orci mattis amet quisque ullamcorper neque, nibh sem. At arcu, sit dui mi, nibh dui, diam
-                eget aliquam. Quisque id at vitae feugiat egestas.
+                {michelin[0].Address}
+              </p>
+              <p className="mt-6 text-xl leading-8 text-gray-700">
+                {michelin[0].Cuisine}
+              </p>
+              <p className="mt-6 text-xl leading-8 text-gray-700">
+                Star Rating: {starFunction(0)}
               </p>
             </div>
           </div>
@@ -54,10 +69,7 @@ function SingleResultCard() {
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <p>
-                Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris semper sed amet
-                vitae sed turpis id. Id dolor praesent donec est. Odio penatibus risus viverra tellus varius sit neque
-                erat velit. Faucibus commodo massa rhoncus, volutpat. Dignissim sed eget risus enim. Mattis mauris
-                semper sed amet vitae sed turpis id.
+                {michelin[0].Description}
               </p>
             </div>
           </div>

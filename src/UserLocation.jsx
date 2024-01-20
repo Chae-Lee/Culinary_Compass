@@ -14,7 +14,6 @@ function UserLocation() {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
       console.log("Latitude:", userLocation.latitude);
       console.log("Longitude:", userLocation.longitude);
-      console.log("testing");
     }
   }, [userLocation]);
 

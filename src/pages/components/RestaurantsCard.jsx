@@ -2,14 +2,22 @@ import React from 'react';
 import michelin from '../../michelin.json'
 
 function starFunction(n) {
-    if(michelin[n].Award === "3 Stars"){
+    if(n.Award == "3 Stars"){
         return "⭐⭐⭐"
-     } else if (michelin[n].Award === "2 Stars"){
+     } else if (n.Award == "2 Stars"){
         return "⭐⭐"
+     } else if(n.Award == "Bib Gourmand"){
+        return "🅱️ Bib Gourmand"
      } else {
         return "⭐"
      }
     }
+
+const randomIndGen = (max) => {
+    return Math.floor(Math.random() * (max + 1))
+}
+
+const randRestaurant = michelin[randomIndGen(michelin.length)]
 
 function SingleResultCard() {
   return (
@@ -45,15 +53,15 @@ function SingleResultCard() {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {michelin[0].Name}</h3>
+                {randRestaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {michelin[0].Address}
+                {randRestaurant.Address}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {michelin[0].Cuisine}
+                {randRestaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                Star Rating: {starFunction(0)}
+                Star Rating: {starFunction(randRestaurant)}
               </p>
             </div>
           </div>
@@ -69,7 +77,7 @@ function SingleResultCard() {
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <p>
-                {michelin[0].Description}
+                {randRestaurant.Description}
               </p>
             </div>
           </div>

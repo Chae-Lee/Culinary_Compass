@@ -1,6 +1,7 @@
 import React from "react";
 import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
+import SingleResultCard from "./components/RestaurantsCard";
 
 // Home page.
 function Home() {
@@ -18,6 +19,8 @@ function Home() {
 
               {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
               <MultiResults />
+
+              <SingleResultCard />
             </div>
           </div>
         </div>

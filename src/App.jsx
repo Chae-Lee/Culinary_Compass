@@ -14,8 +14,8 @@ function App() {
       <Router>
         {/* Header visible across all pages */}
         <NavBar />
-        <UserLocation />
-        {/* <WelModal />  - temporarily disabled to test out the UserLocation*/}
+        {/* <UserLocation /> */}
+        <WelModal />
         <Routes>
           {/* Different paths set to be rendered, with Home set as the default */}
           <Route path="/" element={<Home />} />

@@ -14,6 +14,7 @@ function UserLocation() {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
       console.log("Latitude:", userLocation.latitude);
       console.log("Longitude:", userLocation.longitude);
+      console.log("testing");
     }
   }, [userLocation]);
 
@@ -96,7 +97,7 @@ function UserLocation() {
                         className="text-base font-semibold leading-6 text-gray-900"
                       >
                         Allow "Culinary Compass" to access your location while
-                        you are using the app?
+                        you are using the website?
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">

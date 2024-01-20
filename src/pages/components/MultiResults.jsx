@@ -2,7 +2,7 @@ import React from "react";
 
 // Test Data
 
-const people = [
+const testData = [
     
     {
       name: 'LOSIER',
@@ -11,7 +11,7 @@ const people = [
       Location: "Tokyo",
       Country: "Japan",
       Cuisine: "French, Contemporary",
-      Award: "3 Stars",
+      Award: "/public/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/l-osier",
     },
     {
@@ -21,7 +21,7 @@ const people = [
       Location: "Tokyo",
       Country: "Japan",
       Cuisine: "Japanese",
-      Award: "3 Stars",
+      Award: "/public/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/tokyo-region/tokyo/restaurant/azabu-kadowaki",
     },
     {
@@ -30,8 +30,8 @@ const people = [
         'https://images.unsplash.com/photo-1625938146357-754891591b16?q=80&w=3397&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       Location: "Fürstenau",
       Country: "Switzerland",
-      Cuisine: "Creative, Country cooking",
-      Award: "3 Stars, Green Star",
+      Cuisine: "Creative, Country Cooking",
+      Award: "/public/images/michelin-three-green.png",
       Url: "https://guide.michelin.com/en/graubunden/frstenau/restaurant/schloss-schauenstein",
     },
     {
@@ -41,7 +41,7 @@ const people = [
       Location: "Munich",
       Country: "Germany",
       Cuisine: "Creative, Modern Cuisine",
-      Award: "3 Stars",
+      Award: "/public/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/bayern/mnchen/restaurant/jan-1204321",
     },
     {
@@ -51,7 +51,7 @@ const people = [
       Location: "Bray",
       Country: "United Kingdom",
       Cuisine: "Creative",
-      Award: "3 Stars",
+      Award: "/public/images/michelin-three.png",
       Url: "https://guide.michelin.com/en/windsor-and-maidenhead/bray/restaurant/fat-duck",
     },
     {
@@ -61,7 +61,7 @@ const people = [
       Location: "Barcelona",
       Country: "Spain",
       Cuisine: "Spanish",
-      Award: "2 Stars",
+      Award: "/public/images/michelin-two.png",
       Url: "https://guide.michelin.com/en/catalunya/barcelona/restaurant/enoteca204150",
     },
   ]
@@ -69,22 +69,23 @@ const people = [
 export default function MultiResults() {
     return (
         <ul role="list" className="divide-y divide-gray-100">
-                        {people.map((person) => (
-                            <li key={person.name} className="flex justify-between gap-x-6 py-5">
+                        {testData.map((restaurant) => (
+                            <li key={restaurant.name} className="flex justify-between gap-x-6 py-5">
                             <div className="flex min-w-0 gap-x-4">
                                 
-                                <img className="h-24 w-24 flex-none rounded-md bg-gray-50" src={person.imageUrl} alt="" />
+                                <img className="h-24 w-24 flex-none rounded-md bg-gray-50" src={restaurant.imageUrl} alt="" />
                                 
                                 <div className="min-w-0 flex-auto">
-                                <p className="text-sm font-semibold leading-6 text-gray-900">{person.name}</p>
-                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Cuisine}</p>
-                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Award}</p>
-                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{person.Url}</p>
+                                <p className="text-sm font-semibold leading-6 text-gray-900">{restaurant.name}</p>
+                                <p className="mt-1 truncate text-xs leading-5 text-gray-500">{restaurant.Cuisine}</p>
+                                
+                                <img className="h-4 mt-1.5 mb-1.5" src={restaurant.Award} alt="" />
+                                <a className="mt-1 truncate text-xs leading-5 text-gray-500 underline" href ={restaurant.Url}>Read the Michelin Guide</a>
                                 </div>
                             </div>
                             <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-                                <p className="text-sm leading-6 text-gray-900">{person.Location}</p>
-                                <p className="mt-1 text-xs leading-5 text-gray-500">{person.Country}</p>
+                                <p className="text-sm leading-6 text-gray-900">{restaurant.Location}</p>
+                                <p className="text-xs leading-5 text-gray-500">{restaurant.Country}</p>
                             </div>
                             </li>
                         ))}

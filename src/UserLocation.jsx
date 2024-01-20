@@ -3,22 +3,25 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 
+// Function to obtain user's current geolocation when the "Allow" button on the dialog box is clicked.
 function UserLocation() {
-  const [userLocation, setUserLocation] = useState("");
-  const getUserLocation = () => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          setUserLocation({ latitude, longitude });
-        },
-        (error) => {
-          setError("Something went wrong getting your location");
-        }
-      );
-    } else {
-      console.error("Geolocation is not supported by this browser");
-    }
+  handleClick = () => {
+    const [userLocation, setUserLocation] = useState("");
+    const getUserLocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            setUserLocation({ latitude, longitude });
+          },
+          (error) => {
+            setError("Something went wrong getting your location");
+          }
+        );
+      } else {
+        console.error("Geolocation is not supported by this browser");
+      }
+    };
   };
 
   const [open, setOpen] = useState(true);
@@ -26,6 +29,7 @@ function UserLocation() {
   const cancelButtonRef = useRef(null);
 
   return (
+    //Dialog box for obtaining user's consent to share their current location
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -83,7 +87,7 @@ function UserLocation() {
                   <button
                     type="button"
                     className="inline-flex w-full justify-center rounded-md bg-green-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 sm:ml-3 sm:w-auto"
-                    onClick={() => setOpen(false)}
+                    onClick={(handleClick) => setOpen(false)}
                   >
                     Allow
                   </button>

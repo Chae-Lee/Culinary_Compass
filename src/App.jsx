@@ -3,7 +3,6 @@ import NavBar from "./NavBar.jsx";
 import Home from "./pages/Home.jsx";
 import Team from "./pages/Team.jsx";
 import ContactUs from "./pages/Contact.jsx";
-import WelModal from "./pages/components/WelcomeModal";
 import Footer from "./Footer.jsx";
 import UserLocation from "./UserLocation.jsx";
 

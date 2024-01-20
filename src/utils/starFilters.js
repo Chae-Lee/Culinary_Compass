@@ -1,8 +1,7 @@
 import michelin from '../michelin.json' assert {type: 'json'}
 
-
-function resultFilter(){
-    const result = michelin.filter(michelin => michelin.Award == "/images/michelin-three.png")
+function resultFilter(value){
+    const result = michelin.filter(michelin => michelin.Country == " " + value)
     return result
 }
 

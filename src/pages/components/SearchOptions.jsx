@@ -1,5 +1,6 @@
 import React from "react";
 import ComboBox from "./ComboBox";
+import resultFilter from "../../utils/starFilters";
 
 export default function SearchOptions() {
     return (
@@ -53,3 +54,8 @@ export default function SearchOptions() {
         </div>
     )
 }
+
+const userChoice = "Japan"
+
+console.log(resultFilter(userChoice))
+

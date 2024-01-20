@@ -1,4 +1,5 @@
 import React from "react";
+import ComboBox from "./CountrySearch";
 
 export default function SearchOptions() {
     return (
@@ -41,7 +42,7 @@ export default function SearchOptions() {
                 />
                 </div>  
             </div>
-
+            <ComboBox />
 {/* NEAR ME */}
 
             <div className="flex flex-col gap-2 mt-8">

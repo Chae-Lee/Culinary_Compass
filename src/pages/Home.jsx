@@ -5,7 +5,7 @@ import SingleResultCard from "./components/RestaurantsCard";
 
 // Home page.
 function Home() {
-    return (
+  return (
     <div>
         {/* Modal was here */}
         <div className="overflow-hidden bg-white py-24 sm:py-24">

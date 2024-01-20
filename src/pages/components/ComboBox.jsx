@@ -1,6 +1,5 @@
-import { Fragment, useState } from "react";
+import { useState } from "react";
 import { Combobox } from '@headlessui/react'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 // Test Data
 
@@ -97,29 +96,23 @@ function ComboBox() {
     <div>
         <Combobox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
-            <div className="relative w-full cursor-default overflow-hidden rounded-lg bg-white text-left shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-green-300 sm:text-sm">
-                <Combobox.Input
-                    className="block w-full rounded-md border-none px-3.5 py-2 text-gray-800 placeholder:text-gray-600 sm:text-sm sm:leading-6"
-                    placeholder="Start typing your country here..."
+            <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white w-60">
+                <Combobox.Input className="bg-indigo-600 w-full font-semibold text-white"
+                    placeholder="Or type a country here!"
                     displayValue={(restaurants) => restaurants.Country}
                     onChange={(event) => setSearch(event.target.value)}
                 />
-                <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-2">
-                    <ChevronDownIcon className="h-5 w-5 text-green-600" aria-hidden="true" />
-                </Combobox.Button>
             </div>
-            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white px-1 py-2 text-base ring-gray/5 focus:outline-none sm:text-sm">
+            <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md px-1 py-2 text-base ring-gray/5 focus:outline-none sm:text-sm">
                 {filteredrestaurants.length === 0 && search !== '' ? (
-                <div className="relative cursor-default select-none px-2 py-2 text-gray-700">
-                    No restaurants found in that country!
-                </div>
+                <div className="relative cursor-default select-none px-2 py-2 text-white"></div>
                 ) : (
                 filteredrestaurants.map((restaurants) => (
                     <Combobox.Option
                     key={restaurants.id}
                     className={({ active }) =>
                         `relative cursor-default select-none py-2 pl-10 pr-4 ${
-                        active ? 'bg-green-600 text-white' : 'text-gray-900'
+                        active ? 'bg-indigo-300 text-white' : 'text-white'
                         }`
                     }
                     value={restaurants}
@@ -136,7 +129,7 @@ function ComboBox() {
                         {selected ? (
                             <span
                             className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                active ? 'text-white' : 'text-green-500'
+                                active ? 'text-white' : 'text-indigo-500'
                             }`}
                             >
                             </span>

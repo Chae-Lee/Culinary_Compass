@@ -1,19 +1,21 @@
 import { useState, useEffect } from "react";
-// import restaurants from "/src/michelin.json";
+import restaurants from "/src/michelin.json";
 
 export default function Countries () {
 
-    // ! Example only
-    const [countries, setCountries] = useState(["Spain", "Spain", "France", "Italy", "Spain", "Japan"]);
+    // Create new array of country names only from json data.
+    let countriesData = restaurants.map((
+        { Country }) => ( Country ));
+
+    // Filter out duplicate values and update state with unique country names only.
+    const [countries, setCountries] = useState(countriesData);
     
     useEffect(() => {
-        // Filter out duplicate values.
         const uniqueCountries = [...new Set(countries)];
-        // Update state with unique countries
         setCountries(uniqueCountries);
     }, []);
     
-    // Return list of countries without duplicates.
+    // Return list of unique country names.
     return (  
         <>
             {countries.map((country, index) => (

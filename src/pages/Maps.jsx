@@ -48,14 +48,3 @@ function Maps({ restaurantData, userLocation }) {
 }
 
 export default Maps;
-
-// if (restaurantData && restaurantData.length > 0) {
-//   const iframeData = document.getElementById("iframeId");
-//   const markers = restaurantData.map((restaurant) => {
-//     return `${restaurant.Latitude}, ${restaurant.Longitude}`;
-//   });
-// }
-// const { Latitude, Longitude } = restaurantData;
-
-// const latitude = 38.921295;
-// const longitude = -77.043915;

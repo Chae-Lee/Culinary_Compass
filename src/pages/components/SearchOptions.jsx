@@ -1,7 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import ComboBox from "./ComboBox";
 import UserLocation from "../../UserLocation";
+import Combobox from "./Combobox";
+import Countries from "./Countries";
 
 export default function SearchOptions() {
   const [showUserLocation, setShowUserLocation] = useState(false);
@@ -37,7 +38,8 @@ export default function SearchOptions() {
       </div>
 
       {/* COUNTRY SEARCH */}
-      <ComboBox />
+      <Countries />
+      <Combobox />
 
       {/* NEAR ME */}
 

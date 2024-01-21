@@ -13,21 +13,15 @@ function Maps({ restaurantData, userLocation }) {
   });
 
   // iterating through the michelin.json data and displaying on the map (KEEP)
-  // useEffect(() => {
-  //   michelinData.forEach(function (restaurant) {
-  //     console.log(
-  //       `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
-  //     );
-  //     const iframeData = document.getElementById("iframeId");
-  //     iframeData.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
-  //   });
-  // }, [michelinData]);
-
-  // fetching user location and displaying on map (testing)
-  // useEffect(() => {
-  //   const iframeData = document.getElementById("iframeId");
-  //   iframeData.src = `https://maps.google.com/maps?q=${userLocation.Latitude}, ${userLocation.Longitude}&h1=es;&output=embed`;
-  // }, [userLocation]);
+  useEffect(() => {
+    michelinData.forEach(function (restaurant) {
+      // console.log(
+      //   `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
+      // );
+      const iframeDataRestaurant = document.getElementById("iframeRestaurant");
+      iframeDataRestaurant.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
+    });
+  }, [michelinData]);
 
   useEffect(() => {
     if (userLocation) {
@@ -42,7 +36,7 @@ function Maps({ restaurantData, userLocation }) {
   //KEEP
   return (
     <div>
-      <iframe id="iframeId" height="400px" width="600px"></iframe>
+      <iframe id="iframeRestaurant" height="400px" width="800px"></iframe>
     </div>
   );
 }

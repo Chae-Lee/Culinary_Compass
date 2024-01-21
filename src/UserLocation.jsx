@@ -14,6 +14,7 @@ function UserLocation() {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
       console.log("Latitude:", userLocation.latitude);
       console.log("Longitude:", userLocation.longitude);
+      //fetching user location and displaying on map
       const iframeData = document.getElementById("iframeId");
       iframeData.src = `https://maps.google.com/maps?q=${userLocation.latitude}, ${userLocation.longitude}&h1=es;&output=embed`;
     }

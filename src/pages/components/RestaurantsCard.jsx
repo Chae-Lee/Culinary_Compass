@@ -1,25 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import michelin from '../../michelin.json'
+import randomIndGen from '../../utils/randomIndex';
 
 function starFunction(n) {
-    if(n.Award == "3 Stars"){
-        return "⭐⭐⭐"
-     } else if (n.Award == "2 Stars"){
-        return "⭐⭐"
-     } else if(n.Award == "Bib Gourmand"){
-        return "🅱️ Bib Gourmand"
-     } else {
-        return "⭐"
-     }
-    }
-
-const randomIndGen = (max) => {
-    return Math.floor(Math.random() * (max + 1))
+  if (n.Award == "3 Stars") {
+    return "⭐⭐⭐"
+  } else if (n.Award == "2 Stars") {
+    return "⭐⭐"
+  } else if (n.Award == "Bib Gourmand") {
+    return "🅱️ Bib Gourmand"
+  } else {
+    return "⭐"
+  }
 }
 
-const randRestaurant = michelin[randomIndGen(michelin.length)]
+function SingleResultCard({clickEvent}) {
+  const randRestaurant = michelin[randomIndGen(michelin.length)]
+  
+  const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
+  
+  function handleClick() {
+    setRestaurant(randRestaurant)
+  }
 
-function SingleResultCard() {
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -52,13 +55,16 @@ function SingleResultCard() {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
+              <button
+                onClick={handleClick}
+              >Test</button>
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {randRestaurant.Name}</h3>
+                {restaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {randRestaurant.Address}
+                {restaurant.Address}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {randRestaurant.Cuisine}
+                {restaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 Star Rating: {starFunction(randRestaurant)}
@@ -77,7 +83,7 @@ function SingleResultCard() {
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <p>
-                {randRestaurant.Description}
+                {restaurant.Description}
               </p>
             </div>
           </div>

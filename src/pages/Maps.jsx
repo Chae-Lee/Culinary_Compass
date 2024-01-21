@@ -1,17 +1,31 @@
 import React, { useState, useEffect } from "react";
 import UserLocation from "../UserLocation";
-import "../michelin.json";
+import michelinData from "../michelin.json";
 
-function Maps() {
+function Maps({ restaurantData }) {
   useEffect(() => {
     const iframeData = document.getElementById("iframeId");
-    const latitude = 38.921295;
-    const longitude = -77.043915;
-    iframeData.src = `https://maps.google.com/maps?q=${latitude}, ${longitude}&h1=es;&output=embed`;
-  });
+
+    for (let i = 0; i < restaurantData.length; i++) {
+      const { Latitude, Longitude } = restaurantData[i];
+      iframeData.src = `https://maps.google.com/maps?q=${Latitude}, ${Longitude}&h1=es;&output=embed`;
+    }
+  }, [restaurantData]);
+
+  // if (restaurantData && restaurantData.length > 0) {
+  //   const iframeData = document.getElementById("iframeId");
+  //   const markers = restaurantData.map((restaurant) => {
+  //     return `${restaurant.Latitude}, ${restaurant.Longitude}`;
+  //   });
+  // }
+  // const { Latitude, Longitude } = restaurantData;
+
+  // const latitude = 38.921295;
+  // const longitude = -77.043915;
+
   return (
     <div>
-      <iframe id="iframeId" height="500px" width="100%"></iframe>
+      <iframe id="iframeId" height="400px" width="600px"></iframe>
     </div>
   );
 }

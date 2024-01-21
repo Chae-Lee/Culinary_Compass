@@ -1,29 +1,48 @@
 import React from "react";
+import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/RestaurantsCard";
+import Maps from "./Maps";
+import michelinData from "../michelin.json";
 
 // Home page.
 function Home() {
-    return (
+  
+  // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
+
+  const [renderedComponent, setRenderedComponent] = useState('RestaurantCard');
+
+  // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
+
+  const clickTestButton = (component) => {
+    setRenderedComponent(component);
+  }
+  
+  return (
     <div>
-        {/* Modal was here */}
-        <div className="overflow-hidden bg-white py-24 sm:py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                
-                {/* Sets the two column grid container */} 
-            <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+      <div className="overflow-hidden bg-white py-24 sm:py-24">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8">
+          {/* Sets the two column grid container */}
+          <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+            {/* SEARCH BOX COMPONENT */}
+            <SearchOptions testButtonClick={clickTestButton}/>
 
-              {/* SEARCH BOX COMPONENT */}
-              <SearchOptions />
+            {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 
-              {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
-              <MultiResults />
+            {/* test showing one or the other */}
 
-              <SingleResultCard />
-            </div>
+            { renderedComponent === 'RestaurantCard' ? <SingleResultCard /> : null }
+            { renderedComponent === 'MultiResults' ? <MultiResults /> : null }
+
+            {/* <MultiResults />
+
+            <SingleResultCard /> */}
+
+            <Maps restaurantData={michelinData} />
           </div>
         </div>
+      </div>
     </div>
   );
 }

@@ -1,26 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
-import { useState } from 'react';
 
 function starFunction(n) {
-    if(n.Award == "3 Stars"){
-        return "⭐⭐⭐"
-     } else if (n.Award == "2 Stars"){
-        return "⭐⭐"
-     } else if(n.Award == "Bib Gourmand"){
-        return "🅱️ Bib Gourmand"
-     } else {
-        return "⭐"
-     }
-    }
-    const randRestaurant = michelin[randomIndGen(michelin.length)]
-  
-  function SingleResultCard() {
-    
-    const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
-    
-    function handleClick(){
+  if (n.Award == "3 Stars") {
+    return "⭐⭐⭐"
+  } else if (n.Award == "2 Stars") {
+    return "⭐⭐"
+  } else if (n.Award == "Bib Gourmand") {
+    return "🅱️ Bib Gourmand"
+  } else {
+    return "⭐"
+  }
+}
+
+function SingleResultCard() {
+  const randRestaurant = michelin[randomIndGen(michelin.length)]
+
+  const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
+
+  function handleClick() {
     setRestaurant(randRestaurant)
   }
 
@@ -57,7 +56,7 @@ function starFunction(n) {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <button
-              onClick={handleClick}
+                onClick={handleClick}
               >Test</button>
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {restaurant.Name}</h3>

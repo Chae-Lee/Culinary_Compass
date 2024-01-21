@@ -3,12 +3,13 @@ import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MapPinIcon } from "@heroicons/react/24/outline";
 
-// Function to obtain user's current geolocation when the "Allow" button on the dialog box is clicked.
+// Function to fetch user's current geolocation when the "Allow" button on the dialog box is clicked.
 function UserLocation() {
   const [open, setOpen] = useState(true);
   const cancelButtonRef = useRef(null);
   const [userLocation, setUserLocation] = useState(null);
 
+  // useEffect hook used to log user's latitude and longitude to the console whenever userLocation changes. Ensures that console.logs are executed after the state has been updated.
   useEffect(() => {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
       console.log("Latitude:", userLocation.latitude);
@@ -16,6 +17,7 @@ function UserLocation() {
     }
   }, [userLocation]);
 
+  // Function to check if userLocation is null, if null it calls the getUserLocation function to fetch user's geolocation.
   const handleClick = () => {
     if (!userLocation) {
       getUserLocation();
@@ -23,6 +25,15 @@ function UserLocation() {
     setOpen(false);
   };
 
+  // Function called when user does not want to share their geolocation.
+  const denyClick = () => {
+    console.log("The user has decided to not share their location");
+    alert(
+      "You have decided to not share your location. The restaurant results will not be specific to your location"
+    );
+  };
+
+  // Function to fetch user's current geolocation - calling longitude and latitude
   const getUserLocation = () => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
@@ -42,7 +53,7 @@ function UserLocation() {
   };
 
   return (
-    //Dialog box for obtaining user's consent to share their current location
+    //Dialog box to obtain user's consent to share their current location
     <Transition.Root show={open} as={Fragment}>
       <Dialog
         as="div"
@@ -85,7 +96,7 @@ function UserLocation() {
                         className="text-base font-semibold leading-6 text-gray-900"
                       >
                         Allow "Culinary Compass" to access your location while
-                        you are using the app?
+                        you are using the website?
                       </Dialog.Title>
                       <div className="mt-2">
                         <p className="text-sm text-gray-500">
@@ -110,7 +121,10 @@ function UserLocation() {
                   <button
                     type="button"
                     className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
-                    onClick={() => setOpen(false)}
+                    onClick={() => {
+                      setOpen(false);
+                      denyClick();
+                    }}
                     ref={cancelButtonRef}
                   >
                     Don't Allow

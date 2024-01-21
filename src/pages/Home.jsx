@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
-import MultiResults from "./components/MultiResultsTests";
+import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/RestaurantsCard";
 import Maps from "./Maps";
 import michelinData from "../michelin.json";

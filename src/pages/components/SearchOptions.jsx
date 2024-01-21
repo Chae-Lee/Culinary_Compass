@@ -3,6 +3,7 @@ import UserLocation from "../../UserLocation";
 import ComboBox from "./ComboBox";
 import resultFilter from "../../utils/starFilters";
 import michelin from "../../michelin.json";
+import LoadingIcon from "./LoadingIcon";
 
 export default function SearchOptions({ testButtonClick, clickEvent }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
@@ -17,6 +18,7 @@ export default function SearchOptions({ testButtonClick, clickEvent }) {
         <h2 className="text-base font-semibold leading-7 text-indigo-600">
           Culinary Compass
         </h2>
+        <LoadingIcon />
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Find your next culinary experience, anywhere in the world
         </p>

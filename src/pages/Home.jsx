@@ -4,6 +4,7 @@ import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/RestaurantsCard";
 import Maps from "./Maps";
 import michelinData from "../michelin.json";
+import userLocation from "../UserLocation";
 
 // Home page.
 function Home() {
@@ -17,7 +18,7 @@ function Home() {
             {/* SEARCH BOX COMPONENT */}
             <SearchOptions />
 
-            <Maps restaurantData={michelinData} />
+            <Maps restaurantData={michelinData} userLocation={userLocation} />
 
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
             <MultiResults />

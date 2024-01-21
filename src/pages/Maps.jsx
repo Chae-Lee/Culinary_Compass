@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import UserLocation from "../UserLocation";
+import userLocation from "../UserLocation";
 import michelinData from "../michelin.json";
 
-function Maps({ restaurantData }) {
+function Maps({ restaurantData, userLocation }) {
   useEffect(() => {
     const iframeData = document.getElementById("iframeId");
 

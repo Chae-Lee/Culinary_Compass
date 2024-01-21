@@ -75,7 +75,7 @@ export default function MultiResults() {
               <li key={restaurant.name} className="flex justify-between gap-x-6 py-5">
                 <div className="flex min-w-0 gap-x-4">
                 {/* CuisineImage */}
-                <img className="h-24 w-24 flex-none rounded-md bg-gray-50" src={restaurant.imageUrl} alt="" />      
+                <img className="h-24 w-24 flex-none rounded-md bg-gray-50 object-cover" src={restaurant.imageUrl} alt="" />      
                   {/* Restaurant Info */}
                   <div className="min-w-0 flex-auto">
                     <p className="text-sm font-semibold leading-6 text-gray-900">{restaurant.name}</p>

@@ -3,7 +3,7 @@ import { useState } from "react";
 import ComboBox from "./ComboBox";
 import UserLocation from "../../UserLocation";
 
-export default function SearchOptions() {
+export default function SearchOptions({ testButtonClick }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
 
   const handleFindNearMeClick = () => {
@@ -74,6 +74,23 @@ export default function SearchOptions() {
             <img className="h-6" src="/images/michelin-one.png"></img>
           </span>
         </label>
+      </div>
+
+      {/* Test buttons for showing the correct component */}
+      <div className="flex flex-col gap-4 pt-4">
+        <button
+          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
+          onClick={() => testButtonClick("RestaurantCard")}
+        >
+          Test - Show RestaurantCard
+        </button>
+
+        <button
+          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
+          onClick={() => testButtonClick("MultiResults")}
+        >
+          Test - Show MultiResults
+        </button>
       </div>
     </div>
   );

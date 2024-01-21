@@ -46,7 +46,6 @@ function Home() {
             {/* <MultiResults />
 
             <SingleResultCard /> */}
-
             <Maps restaurantData={michelinData} userLocation={userLocation} />
           </div>
         </div>

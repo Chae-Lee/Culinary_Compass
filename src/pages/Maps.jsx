@@ -24,10 +24,10 @@ function Maps({ restaurantData, userLocation }) {
   // }, [michelinData]);
 
   // fetching user location and displaying on map (testing)
-  useEffect(() => {
-    const iframeData = document.getElementById("iframeId");
-    iframeData.src = `https://maps.google.com/maps?q=${userLocation.Latitude}, ${userLocation.Longitude}&h1=es;&output=embed`;
-  }, [userLocation]);
+  // useEffect(() => {
+  //   const iframeData = document.getElementById("iframeId");
+  //   iframeData.src = `https://maps.google.com/maps?q=${userLocation.Latitude}, ${userLocation.Longitude}&h1=es;&output=embed`;
+  // }, [userLocation]);
 
   useEffect(() => {
     if (userLocation) {

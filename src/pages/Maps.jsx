@@ -13,15 +13,15 @@ function Maps({ restaurantData, userLocation }) {
   // });
 
   // iterating through the michelin.json data and displaying on the map (KEEP)
-  // useEffect(() => {
-  //   michelinData.forEach(function (restaurant) {
-  //     console.log(
-  //       `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
-  //     );
-  //     const iframeData = document.getElementById("iframeId");
-  //     iframeData.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
-  //   });
-  // }, [michelinData]);
+  useEffect(() => {
+    michelinData.forEach(function (restaurant) {
+      console.log(
+        `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
+      );
+      const iframeData = document.getElementById("iframeId");
+      iframeData.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
+    });
+  }, [michelinData]);
 
   // fetching user location and displaying on map (testing)
   // useEffect(() => {

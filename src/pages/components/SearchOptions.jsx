@@ -1,21 +1,15 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import UserLocation from "../../UserLocation";
 import ComboBox from "./ComboBox";
 import resultFilter from "../../utils/starFilters";
 import michelin from "../../michelin.json"
 
-export default function SearchOptions({ testButtonClick }) {
+export default function SearchOptions({ testButtonClick, clickEvent }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
-  const [] = useState()
 
   const handleFindNearMeClick = () => {
     setShowUserLocation(true);
   };
-
-  function handleSurpriseClick(){
-    return 
-  }
 
   return (
     <div className="lg:pr-8 lg:pt-4">
@@ -35,12 +29,12 @@ export default function SearchOptions({ testButtonClick }) {
       {/* RANDOM BUTTON */}
 
       <div className="mt-4 mb-8 flex flex-col gap-x-6">
-        <a
+        <button
           className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={handleSurpriseClick}
+          onClick={clickEvent}
         >
           Surprise me!
-        </a>
+        </button>
       </div>
 
       {/* COUNTRY SEARCH */}
@@ -51,7 +45,7 @@ export default function SearchOptions({ testButtonClick }) {
       <div className="flex flex-col gap-2 mt-8">
         <button
           className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={handleFindNearMeClick}
+          onClick={() => {handleFindNearMeClick}}
         >
           Find Near Me
         </button>

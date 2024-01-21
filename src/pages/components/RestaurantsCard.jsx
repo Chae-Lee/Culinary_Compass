@@ -14,11 +14,11 @@ function starFunction(n) {
   }
 }
 
-function SingleResultCard() {
+function SingleResultCard({clickEvent}) {
   const randRestaurant = michelin[randomIndGen(michelin.length)]
-
+  
   const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
-
+  
   function handleClick() {
     setRestaurant(randRestaurant)
   }

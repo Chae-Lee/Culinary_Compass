@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
-import MultiResults from "./components/MultiResults";
+import MultiResults from "./components/MultiResultsTests";
 import SingleResultCard from "./components/RestaurantsCard";
 import Maps from "./Maps";
 import michelinData from "../michelin.json";
@@ -11,7 +11,7 @@ function Home() {
   
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
 
-  const [renderedComponent, setRenderedComponent] = useState('RestaurantCard');
+  const [renderedComponent, setRenderedComponent] = useState('MultiResults');
 
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
 
@@ -31,9 +31,9 @@ function Home() {
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 
             {/* test showing one or the other */}
-
-            { renderedComponent === 'RestaurantCard' ? <SingleResultCard /> : null }
             { renderedComponent === 'MultiResults' ? <MultiResults /> : null }
+            { renderedComponent === 'RestaurantCard' ? <SingleResultCard /> : null }
+
 
             {/* <MultiResults />
 

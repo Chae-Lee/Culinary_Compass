@@ -4,6 +4,7 @@ import Home from "./pages/Home.jsx";
 import Team from "./pages/Team.jsx";
 import ContactUs from "./pages/Contact.jsx";
 import Footer from "./Footer.jsx";
+import WelModal from "./pages/components/WelcomeModal.jsx"
 // import Maps from "./pages/Maps.jsx";
 
 // Top-level component, rendering all child components, with Home set as default page.

@@ -9,8 +9,6 @@ import userLocation from "../UserLocation";
 
 // Home page.
 function Home() {
-<<<<<<< HEAD
-=======
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
 
   const [renderedComponent, setRenderedComponent] = useState("RestaurantCard");
@@ -21,7 +19,6 @@ function Home() {
     setRenderedComponent(component);
   };
 
->>>>>>> b5454aeead6ea891af2b5eb60ca304c8896fc822
   return (
     <div>
       <div className="overflow-hidden bg-white py-24 sm:py-24">

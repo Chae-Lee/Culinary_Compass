@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
-import userLocation from "../UserLocation";
+import UserLocation from "../UserLocation";
 import michelinData from "../michelin.json";
 
-function Maps({ michelinData, userLocation }) {
-  useEffect(() => {
-    michelinData.map((michelinData) => {
-      const restaurantLongitude = michelinData.Longitude;
-      const restaurantLatitude = michelinData.Latitude;
-      let { Longitude, Latitude } = michelinData;
-      console.log(Longitude, Latitude);
-    });
+function Maps({ restaurantData }) {
+  michelinData.map((michelinData) => {
+    const restaurantLongitude = michelinData.Longitude;
+    const restaurantLatitude = michelinData.Latitude;
+    let { Longitude, Latitude } = michelinData;
+    console.log(Longitude, Latitude);
+  });
 
+  useEffect(() => {
     const iframeData = document.getElementById("iframeId");
 
-    for (let i = 0; i < michelinData.length; i++) {
-      const { Latitude, Longitude } = michelinData[i];
+    for (let i = 0; i < restaurantData.length; i++) {
+      const { Latitude, Longitude } = restaurantData[i];
       iframeData.src = `https://maps.google.com/maps?q=${Latitude}, ${Longitude}&h1=es;&output=embed`;
     }
-  }, [michelinData]);
+  }, [restaurantData]);
 
   return (
     <div>

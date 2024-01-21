@@ -21,6 +21,9 @@ function UserLocation() {
 
   // Function to check if userLocation is null, if null it calls the getUserLocation function to fetch user's geolocation.
   const handleClick = () => {
+    console.log(
+      "Allow button is clicked - wait couple of seconds for the map to appear"
+    );
     if (!userLocation) {
       getUserLocation();
     }

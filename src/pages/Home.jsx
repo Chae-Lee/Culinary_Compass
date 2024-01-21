@@ -20,7 +20,7 @@ function Home() {
   };
 
   function handleClick(value) {
-    setRestaurant(value)
+    setRestaurant(value);
   }
 
   return (
@@ -30,10 +30,10 @@ function Home() {
           {/* Sets the two column grid container */}
           <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
             {/* SEARCH BOX COMPONENT */}
-            <SearchOptions testButtonClick={clickTestButton} clickEvent={handleClick}/>
-
-            <Maps restaurantData={michelinData} userLocation={userLocation} />
-
+            <SearchOptions
+              testButtonClick={clickTestButton}
+              clickEvent={handleClick}
+            />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 
             {/* test showing one or the other */}
@@ -47,7 +47,7 @@ function Home() {
 
             <SingleResultCard /> */}
 
-            <Maps restaurantData={michelinData} />
+            <Maps restaurantData={michelinData} userLocation={userLocation} />
           </div>
         </div>
       </div>

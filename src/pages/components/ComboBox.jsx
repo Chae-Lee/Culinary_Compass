@@ -10,34 +10,40 @@ function ComboBox() {
 
     // Filter out duplicate values and update state with unique country names only.
     const [countries, setCountries] = useState(countriesData);
-    
     useEffect(() => {
         const uniqueCountries = [...new Set(countries)];
         setCountries(uniqueCountries);
     }, []);
 
-    const [selectedCountry, setSelectedCountry] = useState(countries[0])
-    const [query, setQuery] = useState('')
+    // Set state as empty upon page load.
+    const [selectedCountry, setSelectedCountry] = useState('')
 
-    const filteredPeople =
-    query === ''
+    // Carry out search, responding to user keystrokes, ignoring uppercase and lowercase differences.
+    const [search, setSearch] = useState('')
+    const filteredCountries =
+    search === ''
         ? countries
         : countries.filter((country) => {
-            return country.toLowerCase().includes(query.toLowerCase())
+            return country.toLowerCase().includes(search.toLowerCase())
         })
 
+    // Show results as user enters characters.
     return (
-    <Combobox value={selectedCountry} onChange={setSelectedCountry}>
-        <Combobox.Input onChange={(event) => setQuery(event.target.value)} />
-        <Combobox.Options>
-        {filteredPeople.map((country) => (
-            <Combobox.Option key={country} value={country}>
-            {country}
-            </Combobox.Option>
-        ))}
-        </Combobox.Options>
-    </Combobox>
+        <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
+            <Combobox value={selectedCountry} onChange={setSelectedCountry}>
+                <Combobox.Input className="rounded-md bg-indigo-600 h-full w-full"
+                    placeholder="Choose a country"
+                    onChange={(event) => setSearch(event.target.value)} />
+                <Combobox.Options className="bg-indigo-400">
+                    {filteredCountries.map((country) => (
+                        <Combobox.Option key={country} value={country}>
+                        {country}
+                        </Combobox.Option>
+                    ))}
+                </Combobox.Options>
+            </Combobox>
+        </div>
     )
-    }
+};
 
 export default ComboBox;

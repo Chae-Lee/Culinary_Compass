@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import ComboBox from "./ComboBox";
 import UserLocation from "../../UserLocation";
+import ComboBox from "./ComboBox";
 
 export default function SearchOptions({ testButtonClick }) {
   const [showUserLocation, setShowUserLocation] = useState(false);

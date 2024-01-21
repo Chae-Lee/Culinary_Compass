@@ -55,7 +55,7 @@ export default function SearchOptions() {
     )
 }
 
-const userChoice = "Japan"
 
-console.log(resultFilter(userChoice))
+
+console.log(resultFilter("Award", "/images/michelin-three-green.png"))
 

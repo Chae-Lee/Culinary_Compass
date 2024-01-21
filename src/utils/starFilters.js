@@ -1,7 +1,7 @@
 import michelin from '../michelin.json' assert {type: 'json'}
 
-function resultFilter(value){
-    const result = michelin.filter(michelin => michelin.Country == " " + value)
+function resultFilter(key, value){
+    const result = michelin.filter(entry => entry[key] == value)
     return result
 }
 

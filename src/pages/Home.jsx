@@ -8,10 +8,10 @@ import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
 
+const randRestaurant = michelinData[randomIndGen(michelinData.length)]
 // Home page.
 function Home() {
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
-  const randRestaurant = michelinData[randomIndGen(michelinData.length)]
   const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
 
   const [renderedComponent, setRenderedComponent] = useState("SingleResultCard");
@@ -22,8 +22,9 @@ function Home() {
     setRenderedComponent(component);
   };
   
-  const handleClick = (randRestaurant) => {
-    setRestaurant(randRestaurant)
+  
+  const handleClick = (restaurant) => {
+    setRestaurant(restaurant)
   };
 
 
@@ -36,7 +37,7 @@ function Home() {
             {/* SEARCH BOX COMPONENT */}
             <SearchOptions
               testButtonClick={clickTestButton}
-              clickEvent={handleClick}
+               clickEvent={handleClick}
             />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 

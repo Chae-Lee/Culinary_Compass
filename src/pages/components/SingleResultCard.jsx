@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import michelinData from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
 
-function SingleResultCard({ handleClick }) {
-  const randRestaurant = michelinData[randomIndGen(michelinData.length)]
+function SingleResultCard({ clickEvent }) {
   const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
     
+  useEffect(() => {
+    setRandomRestaurant();
+  }, []);
+
+  const setRandomRestaurant = () => {
+    const randomRestaurant = michelinData[randomIndGen(michelinData.length)];
+    setRestaurant(randomRestaurant);
+  };
+
   function starFunction(n) {
     if (n.Award == "3 Stars") {
       return "⭐⭐⭐"
@@ -51,7 +59,7 @@ function SingleResultCard({ handleClick }) {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <button
-                onClick={handleClick}
+                onClick={clickEvent}
               >Test</button>
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
                 {restaurant.Name}</h3>
@@ -62,7 +70,7 @@ function SingleResultCard({ handleClick }) {
                 {restaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                Star Rating: {starFunction(randRestaurant)}
+                Star Rating: {starFunction(setRandomRestaurant)}
               </p>
             </div>
           </div>

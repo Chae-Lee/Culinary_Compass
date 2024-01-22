@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import UserLocation from "../../UserLocation";
 import ComboBox from "./ComboBox";
 import resultFilter from "../../utils/starFilters";
-import michelin from "../../michelin.json";
+import michelinData from "../../michelin.json";
 import LoadingIcon from "./LoadingIcon";
+import randomIndGen from "../../utils/randomIndex";
+
 
 export default function SearchOptions({ testButtonClick, clickEvent }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
+  
+
+  const randRestaurant = () => {
+    const randomRestaurant = michelinData[randomIndGen(michelinData.length)];
+    clickEvent(randomRestaurant);
+  };
 
   const handleFindNearMeClick = () => {
     setShowUserLocation(true);
@@ -33,7 +41,7 @@ export default function SearchOptions({ testButtonClick, clickEvent }) {
       <div className="mt-4 mb-8 flex flex-col gap-x-6">
         <button
           className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={clickEvent}
+          onClick={randRestaurant}
         >
           Surprise me!
         </button>

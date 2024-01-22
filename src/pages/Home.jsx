@@ -2,26 +2,29 @@ import React from "react";
 import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
-import SingleResultCard from "./components/RestaurantsCard";
+import SingleResultCard from "./components/SingleResultCard";
 import Maps from "./Maps";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
+import randomIndGen from "../utils/randomIndex";
 
 // Home page.
 function Home() {
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
-
-  const [renderedComponent, setRenderedComponent] = useState("RestaurantCard");
-
+  const randRestaurant = michelinData[randomIndGen(michelinData.length)]
+  
+  const [renderedComponent, setRenderedComponent] = useState("SingleResultCard");
+  
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
-
+  
   const clickTestButton = (component) => {
     setRenderedComponent(component);
   };
+  
+  const handleClick = (randRestaurant) => {
+    setRestaurant(randRestaurant)
+  };
 
-  function handleClick(value) {
-    setRestaurant(value);
-  }
 
   return (
     <div>
@@ -38,7 +41,7 @@ function Home() {
 
             {/* test showing one or the other */}
 
-            {renderedComponent === "RestaurantCard" ? (
+            {renderedComponent === "SingleResultCard" ? (
               <SingleResultCard />
             ) : null}
             {renderedComponent === "MultiResults" ? <MultiResults /> : null}

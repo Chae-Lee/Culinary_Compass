@@ -2,19 +2,8 @@ import React, { useState } from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
-function starFunction(n) {
-  if (n.Award == "3 Stars") {
-    return "⭐⭐⭐"
-  } else if (n.Award == "2 Stars") {
-    return "⭐⭐"
-  } else if (n.Award == "Bib Gourmand") {
-    return "🅱️ Bib Gourmand"
-  } else {
-    return "⭐"
-  }
-}
 
-function SingleResultCard({clickEvent}) {
+function SingleResultCard() {
   const randRestaurant = michelin[randomIndGen(michelin.length)]
   
   const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
@@ -22,7 +11,18 @@ function SingleResultCard({clickEvent}) {
   function handleClick() {
     setRestaurant(randRestaurant)
   }
-
+  
+  function starFunction(n) {
+    if (n.Award == "3 Stars") {
+      return "⭐⭐⭐"
+    } else if (n.Award == "2 Stars") {
+      return "⭐⭐"
+    } else if (n.Award == "Bib Gourmand") {
+      return "🅱️ Bib Gourmand"
+    } else {
+      return "⭐"
+    }
+  }
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">

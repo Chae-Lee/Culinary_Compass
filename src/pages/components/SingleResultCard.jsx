@@ -1,17 +1,12 @@
 import React, { useState } from 'react';
-import michelin from '../../michelin.json'
+import michelinData from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
 
-function SingleResultCard() {
-  const randRestaurant = michelin[randomIndGen(michelin.length)]
-  
-  const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
-  
-  function handleClick() {
-    setRestaurant(randRestaurant)
-  }
-  
+function SingleResultCard({ handleClick }) {
+  const randRestaurant = michelinData[randomIndGen(michelinData.length)]
+  const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
+    
   function starFunction(n) {
     if (n.Award == "3 Stars") {
       return "⭐⭐⭐"

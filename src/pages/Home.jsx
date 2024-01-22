@@ -12,7 +12,8 @@ import randomIndGen from "../utils/randomIndex";
 function Home() {
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
   const randRestaurant = michelinData[randomIndGen(michelinData.length)]
-  
+  const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
+
   const [renderedComponent, setRenderedComponent] = useState("SingleResultCard");
   
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons

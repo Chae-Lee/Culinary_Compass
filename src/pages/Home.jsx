@@ -3,7 +3,6 @@ import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/SingleResultCard";
-// import Maps from "./Maps";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
@@ -60,7 +59,6 @@ function Home() {
             {/* <MultiResults />
 
             <SingleResultCard /> */}
-            {/* <Maps restaurantData={michelinData} userLocation={userLocation} /> */}
           </div>
         </div>
       </div>

@@ -1,11 +1,33 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import restaurants from "/src/michelin.json";
+import LoadingIcon from "./LoadingIcon";
 
 export default function MultiResults() {
 
   //! Test value only
   let testCountry = "Italy"
 
+  
+  // Control whether the data is loading or not
+  const [isDataLoading, setIsDataLoading] = useState(true);
+
+  // Simulate the loading time of an API call and set 'isDataLoading' to false once done
+  useEffect(() => {
+    setTimeout(() => {
+      setIsDataLoading(false);
+    }, 2000)
+  }, []);
+
+  // If data is loading, return the loading spinner
+  if (isDataLoading === true) {
+    return (
+      <div className="max-h-[750px] pt-48 flex justify-center align-center">
+        <LoadingIcon />
+      </div>
+    )
+    // if data is no longer loading, return the results
+  } else {
     return (
       <div className="max-h-[750px] overflow-y-auto">
         {/* Creates a UL for all results */}
@@ -33,4 +55,4 @@ export default function MultiResults() {
         </ul>
       </div>
     )
-}
+}}

@@ -1,23 +1,38 @@
 import React, { useState } from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
+
 function starFunction(n) {
   if (n.Award == "3 Stars") {
-    return ":star::star::star:"
+    return <img src="../../../public/images/michelin-three.png" />
   } else if (n.Award == "2 Stars") {
-    return ":star::star:"
+    return <img src="../../../public/images/michelin-two.png" />
   } else if (n.Award == "Bib Gourmand") {
-    return ":b: Bib Gourmand"
+    return <img src="../../../public/images/michelin-bib.png" />
+  } else if (n.Award == "1 Star") {
+    return <img src="../../../public/images/michelin-one.png" />
+  } else if (n.Award == "1 Star,Green Star") {
+    return <img src='../../../public/images/michelin-one-green.png' />
+  } else if (n.Award == "2 Stars,Green Star") {
+    return <img src='../../../public/images/michelin-two-green.png' />
+
+  } else if (n.Award == "3 Stars,Green Star") {
+    return <img src='../../../public/images/michelin-three-green.png' />
+
+  } else if (n.Award == "Bib Gourmand,Green Star") {
+    return <img src='../../../public/images/michelin-bib-green.png' />
   } else {
-    return ":star:"
+    return <img src='../../../public/images/michelin-green.png' />
   }
 }
-function SingleResultCard({clickEvent, randomRestaurant}) {
+
+
+function SingleResultCard({ clickEvent, randomRestaurant }) {
   console.log('Props received:', randomRestaurant);
   const randRestaurant = michelin[randomIndGen(michelin.length)]
-    if (!randomRestaurant) {
-      return null;
-    }
+  if (!randomRestaurant) {
+    return null;
+  }
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -51,7 +66,7 @@ function SingleResultCard({clickEvent, randomRestaurant}) {
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-              {randomRestaurant.Name}</h3>
+                {randomRestaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 {randomRestaurant.Address}
               </p>

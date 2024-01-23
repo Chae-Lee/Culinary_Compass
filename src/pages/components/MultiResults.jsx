@@ -2,11 +2,15 @@ import React from "react";
 import restaurants from "/src/michelin.json";
 
 export default function MultiResults() {
+
+  //! Test value only
+  let testCountry = "Italy"
+
     return (
       <div className="max-h-[750px] overflow-y-auto">
         {/* Creates a UL for all results */}
         <ul role="list" className="divide-y divide-gray-100">
-            {restaurants.map((restaurants) => (
+          {restaurants.filter((restaurant) => restaurant.Country = testCountry).map((restaurants) => (
               <li key={restaurants.Name} className="flex justify-between gap-x-6 py-5">
                 <div className="flex min-w-0 gap-x-4">
                 {/* CuisineImage */}

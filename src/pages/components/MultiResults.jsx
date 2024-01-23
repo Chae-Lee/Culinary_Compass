@@ -3,7 +3,7 @@ import restaurants from "/src/michelin.json";
 
 export default function MultiResults() {
 
-  //! Test value
+  //! Test value only
   let testCountry = "Italy"
 
     return (

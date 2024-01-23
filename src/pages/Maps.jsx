@@ -1,42 +1,39 @@
-import React, { useState, useEffect } from "react";
-import userLocation from "../UserLocation";
+import React, { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import michelinData from "../michelin.json";
+import "../pages/Maps.css";
 
-function Maps({ restaurantData, userLocation }) {
-  //fetching lng/lat data from michelin.json file (KEEP)
-  michelinData.map((michelinData) => {
-    const restaurantLongitude = michelinData.Longitude;
-    const restaurantLatitude = michelinData.Latitude;
-    const restaurantLocation = [restaurantLongitude, restaurantLatitude];
-    let { Longitude, Latitude } = michelinData;
-    // console.log(Longitude, Latitude);
-  });
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoia2F0ZTExMjkiLCJhIjoiY2xycGpmbXZnMDViaDJpa2c1b2E5bHRudSJ9.E4DlRODK0CBzucjEsdtqOA";
 
-  // iterating through the michelin.json data and displaying on the map (KEEP)
+function Maps() {
+  const mapContainerRef = useRef(null);
+
   useEffect(() => {
-    michelinData.forEach(function (restaurant) {
-      // console.log(
-      //   `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
-      // );
-      const iframeDataRestaurant = document.getElementById("iframeRestaurant");
-      iframeDataRestaurant.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [michelinData[0].Longitude, michelinData[0].Latitude], // Use the first restaurant's coordinates as the initial center
+      zoom: 10,
     });
-  }, [michelinData]);
 
-  useEffect(() => {
-    if (userLocation) {
-      console.log(
-        "User's Location",
-        userLocation.latitude,
-        userLocation.longitude
-      );
-    }
-  }, [userLocation, restaurantData]);
+    michelinData.forEach((restaurant) => {
+      new mapboxgl.Marker()
+        .setLngLat([restaurant.Longitude, restaurant.Latitude])
+        .addTo(map);
+    });
 
-  //KEEP
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    return () => map.remove();
+  }, []);
+
   return (
     <div>
-      <iframe id="iframeRestaurant" height="400px" width="800px"></iframe>
+      <div className="sidebarStyle">
+        <div className="map-container" ref={mapContainerRef}></div>
+      </div>
     </div>
   );
 }

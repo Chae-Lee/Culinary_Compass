@@ -5,8 +5,7 @@ import michelinData from "../michelin.json";
 import "../pages/Maps.css";
 import userLocation from "../UserLocation";
 
-mapboxgl.accessToken =
-  "pk.eyJ1Ijoia2F0ZTExMjkiLCJhIjoiY2xycGpmbXZnMDViaDJpa2c1b2E5bHRudSJ9.E4DlRODK0CBzucjEsdtqOA";
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX;
 
 function Maps({ userLocation }) {
   const mapContainerRef = useRef(null);
@@ -65,25 +64,6 @@ function Maps({ userLocation }) {
 
     return () => map.remove();
   }, [userLocation]);
-  // Function to calculate the distance between two sets of coordinates using the Haversine formula
-  function getDistance(lat1, lon1, lat2, lon2) {
-    const R = 6371; // Radius of the Earth in kilometers
-    const dLat = degToRad(lat2 - lat1);
-    const dLon = degToRad(lon2 - lon1);
-    const a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(degToRad(lat1)) *
-        Math.cos(degToRad(lat2)) *
-        Math.sin(dLon / 2) *
-        Math.sin(dLon / 2);
-    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    const distance = R * c; // Distance in kilometers
-    return distance * 1000; // Convert to meters
-  }
-
-  function degToRad(deg) {
-    return deg * (Math.PI / 180);
-  }
 
   // // Iterates through the JSON file and places a marker for each restaurant location
   // michelinData.forEach((restaurant) => {
@@ -91,8 +71,6 @@ function Maps({ userLocation }) {
   //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
   //     .addTo(map);
   // });
-
-  map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
   //   return () => map.remove();
   // }, []);

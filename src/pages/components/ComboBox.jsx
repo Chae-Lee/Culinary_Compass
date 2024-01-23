@@ -27,7 +27,8 @@ function ComboBox() {
             return country.toLowerCase().includes(search.toLowerCase())
         })
 
-console.log(selectedCountry);
+    //! console.log below for tests only
+    // console.log("selected country = ", selectedCountry);
 
     // Show results as user enters characters.
     return (

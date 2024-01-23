@@ -7,7 +7,7 @@ import randomIndGen from "../../utils/randomIndex";
 import SingleResultCard from "./SingleResultCard";
 
 
-export default function SearchOptions({ testButtonClick, clickEvent, toggle3Stars}) {
+export default function SearchOptions({ testButtonClick, toggle3Stars}) {
   const [showUserLocation, setShowUserLocation] = useState(false);
   const [randomRestaurant, setRandomRestaurant] = useState(null);  // State to hold the random restaurant
   const handleFindNearMeClick = () => {
@@ -47,7 +47,7 @@ export default function SearchOptions({ testButtonClick, clickEvent, toggle3Star
       </div>
 
       <SingleResultCard 
-      randomRestaurant={randomRestaurant} clickEvent={clickEvent}/>
+      randomRestaurant={randomRestaurant} />
 
       {/* COUNTRY SEARCH */}
       <ComboBox />

@@ -23,19 +23,18 @@ function Home() {
   
   const clickTestButton = (component) => {
     setRenderedComponent(component)
-    console.log(component);
   };
   
   
-  const handleClick = (restaurant) => {
-    setRestaurant(restaurant)
-    console.log()
-  };
-
-  const toggleThreeStars = () => {
+  // const handleClick = (restaurant) => {
+  //   setRestaurant(restaurant)
+  //   console.log()
+  // };
+  /* Working toggle switch */
+  const toggleThreeStars = (results) => {
       setThreeStarToggle(!threeStarToggle)
       if(threeStarToggle === false){
-        console.log(resultFilter('Award', '3 Stars'))
+        return(results('Award', '3 Stars'))
       } else {
         null
       }
@@ -52,7 +51,7 @@ console.log(threeStarToggle)
             {/* SEARCH BOX COMPONENT */}
             <SearchOptions
               testButtonClick={clickTestButton}
-               clickEvent={() => handleClick('randRestaurant')}
+              //  clickEvent={() => handleClick('randRestaurant')}
                toggle3Stars={toggleThreeStars}
             />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}

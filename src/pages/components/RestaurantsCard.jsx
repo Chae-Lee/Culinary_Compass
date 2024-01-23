@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
+import LoadingIcon from "./LoadingIcon";
 
 function starFunction(n) {
   if (n.Award == "3 Stars") {
@@ -15,6 +16,7 @@ function starFunction(n) {
 }
 
 function SingleResultCard({clickEvent}) {
+
   const randRestaurant = michelin[randomIndGen(michelin.length)]
   
   const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
@@ -22,6 +24,25 @@ function SingleResultCard({clickEvent}) {
   function handleClick() {
     setRestaurant(randRestaurant)
   }
+
+    // Control whether the data is loading or not
+const [isDataLoading, setIsDataLoading] = useState(true);
+
+// Simulate the loading time of an API call and set 'isDataLoading' to false once done
+useEffect(() => {
+  setTimeout(() => {
+    setIsDataLoading(false);
+  }, 2000)
+}, []);
+
+  if (isDataLoading === true) {
+    return (
+      <div className="max-h-[750px] pt-48 flex justify-center align-center">
+        <LoadingIcon />
+      </div>
+    )
+    // if data is no longer loading, carry on & return the results
+  } else {
 
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
@@ -91,6 +112,6 @@ function SingleResultCard({clickEvent}) {
       </div>
     </div>
   )
-}
+}}
 
 export default SingleResultCard;

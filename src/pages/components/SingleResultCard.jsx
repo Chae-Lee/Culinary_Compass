@@ -1,17 +1,31 @@
 import React, { useState } from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
+
 function starFunction(n) {
   if (n.Award == "3 Stars") {
-    return ":star::star::star:"
+    return <img src="../../../public/images/michelin-three.png" />
   } else if (n.Award == "2 Stars") {
-    return ":star::star:"
+    return <img src="../../../public/images/michelin-two.png" />
   } else if (n.Award == "Bib Gourmand") {
-    return ":b: Bib Gourmand"
+    return <img src="../../../public/images/michelin-bib.png" />
+  } else if (n.Award == "1 Star"){
+    return <img src="../../../public/images/michelin-one.png" />
+  } else if(n.Award == "1 Star,Green Star"){
+    return <img src='../../../public/images/michelin-one-green.png'/>
+  } else if (n.Award == "2 Stars,Green Star"){
+    return <img src='../../../public/images/michelin-two-green.png'/>
+  
+  } else if (n.Award == "3 Stars,Green Star"){
+    return <img src='../../../public/images/michelin-three-green.png'/>
+  
+  } else if (n.Award == "Bib Gourmand,Green Star"){
+    return <img src='../../../public/images/michelin-bib-green.png'/>
   } else {
-    return ":star:"
-  }
-}
+    return  <img src='../../../public/images/michelin-green.png'/>
+  }}
+
+
 function SingleResultCard({clickEvent, randomRestaurant}) {
   console.log('Props received:', randomRestaurant);
   const randRestaurant = michelin[randomIndGen(michelin.length)]

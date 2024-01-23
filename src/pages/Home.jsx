@@ -7,6 +7,7 @@ import Maps from "./Maps";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
+import resultFilter from "../utils/starFilters";
 
 const randRestaurant = michelinData[randomIndGen(michelinData.length)]
 // Home page.
@@ -19,14 +20,19 @@ function Home() {
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
   
   const clickTestButton = (component) => {
-    setRenderedComponent(component);
+    setRenderedComponent(component)
+    console.log(component);
   };
   
   
   const handleClick = (restaurant) => {
     setRestaurant(restaurant)
+    console.log()
   };
 
+  const toggleThreeStars = () => {
+    console.log(resultFilter('Award', '3 Stars'))
+  }
 
   return (
     <div>
@@ -37,7 +43,8 @@ function Home() {
             {/* SEARCH BOX COMPONENT */}
             <SearchOptions
               testButtonClick={clickTestButton}
-               clickEvent={handleClick}
+               clickEvent={() => handleClick('randRestaurant')}
+               toggle3Stars={toggleThreeStars}
             />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 

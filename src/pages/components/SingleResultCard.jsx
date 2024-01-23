@@ -3,18 +3,6 @@ import michelinData from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
 
-function SingleResultCard({ clickEvent }) {
-  const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
-    
-  useEffect(() => {
-    setRandomRestaurant();
-  }, []);
-
-  const setRandomRestaurant = () => {
-    const randomRestaurant = michelinData[randomIndGen(michelinData.length)];
-    setRestaurant(randomRestaurant);
-  };
-
   function starFunction(n) {
     if (n.Award == "3 Stars") {
       return "⭐⭐⭐"
@@ -26,6 +14,14 @@ function SingleResultCard({ clickEvent }) {
       return "⭐"
     }
   }
+
+function SingleResultCard({ clickEvent, randomRestaurant }) {
+  console.log("props", randomRestaurant)
+const randRestaurant =  michelinData[randomIndGen(michelinData.length)];
+
+if(!randRestaurant){
+return null
+}
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -58,16 +54,14 @@ function SingleResultCard({ clickEvent }) {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <button
-                onClick={clickEvent}
-              >Test</button>
+
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {restaurant.Name}</h3>
+                {randomRestaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {restaurant.Address}
+                {randomRestaurant.Address}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {restaurant.Cuisine}
+                {randomRestaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 Star Rating: {starFunction(setRandomRestaurant)}
@@ -86,7 +80,7 @@ function SingleResultCard({ clickEvent }) {
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <p>
-                {restaurant.Description}
+                {randomRestaurant.Description}
               </p>
             </div>
           </div>

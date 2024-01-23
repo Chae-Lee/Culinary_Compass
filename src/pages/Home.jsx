@@ -16,6 +16,8 @@ function Home() {
   const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
 
   const [renderedComponent, setRenderedComponent] = useState("SingleResultCard");
+
+  const [threeStarToggle, setThreeStarToggle] = useState(false)
   
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
   
@@ -31,8 +33,10 @@ function Home() {
   };
 
   const toggleThreeStars = () => {
-    console.log(resultFilter('Award', '3 Stars'))
+      setThreeStarToggle(!threeStarToggle)
   }
+
+console.log(threeStarToggle)
 
   return (
     <div>

@@ -26,7 +26,6 @@ function starFunction(n) {
   }
 }
 
-
 function SingleResultCard({ clickEvent, randomRestaurant }) {
   console.log('Props received:', randomRestaurant);
   const randRestaurant = michelin[randomIndGen(michelin.length)]

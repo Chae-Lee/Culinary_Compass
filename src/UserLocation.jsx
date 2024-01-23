@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MapPinIcon } from "@heroicons/react/24/outline";
+import Maps from "./pages/Maps";
 
 // Function to fetch user's current geolocation when the "Allow" button on the dialog box is clicked.
 function UserLocation() {
@@ -144,6 +145,7 @@ function UserLocation() {
         </Dialog>
       </Transition.Root>
       <iframe id="iframeId" height="400px" width="600px"></iframe>
+      {userLocation && <Maps userLocation={userLocation} />}
     </div>
   );
 }

@@ -55,9 +55,6 @@ function Home() {
             ) : null}
             {renderedComponent === "MultiResults" ? <MultiResults /> : null}
 
-            {/* <MultiResults />
-
-            <SingleResultCard /> */}
             <Maps restaurantData={michelinData} userLocation={userLocation} />
           </div>
         </div>

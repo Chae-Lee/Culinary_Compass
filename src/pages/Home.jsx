@@ -34,6 +34,11 @@ function Home() {
 
   const toggleThreeStars = () => {
       setThreeStarToggle(!threeStarToggle)
+      if(threeStarToggle === false){
+        console.log(resultFilter('Award', '3 Stars'))
+      } else {
+        null
+      }
   }
 
 console.log(threeStarToggle)

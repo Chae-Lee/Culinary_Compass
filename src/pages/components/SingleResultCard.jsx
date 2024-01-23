@@ -1,49 +1,23 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
-import LoadingIcon from "./LoadingIcon";
-
 function starFunction(n) {
   if (n.Award == "3 Stars") {
-    return "⭐⭐⭐"
+    return ":star::star::star:"
   } else if (n.Award == "2 Stars") {
-    return "⭐⭐"
+    return ":star::star:"
   } else if (n.Award == "Bib Gourmand") {
-    return "🅱️ Bib Gourmand"
+    return ":b: Bib Gourmand"
   } else {
-    return "⭐"
+    return ":star:"
   }
 }
-
-function SingleResultCard({clickEvent}) {
-
+function SingleResultCard({clickEvent, randomRestaurant}) {
+  console.log('Props received:', randomRestaurant);
   const randRestaurant = michelin[randomIndGen(michelin.length)]
-  
-  const [restaurant, setRestaurant] = useState(michelin[randomIndGen(michelin.length)])
-  
-  function handleClick() {
-    setRestaurant(randRestaurant)
-  }
-
-    // Control whether the data is loading or not
-const [isDataLoading, setIsDataLoading] = useState(true);
-
-// Simulate the loading time of an API call and set 'isDataLoading' to false once done
-useEffect(() => {
-  setTimeout(() => {
-    setIsDataLoading(false);
-  }, 2000)
-}, []);
-
-  if (isDataLoading === true) {
-    return (
-      <div className="max-h-[750px] pt-48 flex justify-center align-center">
-        <LoadingIcon />
-      </div>
-    )
-    // if data is no longer loading, carry on & return the results
-  } else {
-
+    if (!randomRestaurant) {
+      return null;
+    }
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -76,16 +50,13 @@ useEffect(() => {
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-              <button
-                onClick={handleClick}
-              >Test</button>
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {restaurant.Name}</h3>
+              {randomRestaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {restaurant.Address}
+                {randomRestaurant.Address}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                {restaurant.Cuisine}
+                {randomRestaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 Star Rating: {starFunction(randRestaurant)}
@@ -104,7 +75,7 @@ useEffect(() => {
           <div className="lg:pr-4">
             <div className="max-w-xl text-base leading-7 text-gray-700 lg:max-w-lg">
               <p>
-                {restaurant.Description}
+                {randomRestaurant.Description}
               </p>
             </div>
           </div>
@@ -112,6 +83,5 @@ useEffect(() => {
       </div>
     </div>
   )
-}}
-
+}
 export default SingleResultCard;

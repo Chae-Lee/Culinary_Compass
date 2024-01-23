@@ -1,27 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import michelinData from '../../michelin.json'
+import React, { useState } from 'react';
+import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
-
-
-  function starFunction(n) {
-    if (n.Award == "3 Stars") {
-      return "⭐⭐⭐"
-    } else if (n.Award == "2 Stars") {
-      return "⭐⭐"
-    } else if (n.Award == "Bib Gourmand") {
-      return "🅱️ Bib Gourmand"
-    } else {
-      return "⭐"
-    }
+function starFunction(n) {
+  if (n.Award == "3 Stars") {
+    return ":star::star::star:"
+  } else if (n.Award == "2 Stars") {
+    return ":star::star:"
+  } else if (n.Award == "Bib Gourmand") {
+    return ":b: Bib Gourmand"
+  } else {
+    return ":star:"
   }
-
-function SingleResultCard({ clickEvent, randomRestaurant }) {
-  console.log("props", randomRestaurant)
-const randRestaurant =  michelinData[randomIndGen(michelinData.length)];
-
-if(!randRestaurant){
-return null
 }
+function SingleResultCard({clickEvent, randomRestaurant}) {
+  console.log('Props received:', randomRestaurant);
+  const randRestaurant = michelin[randomIndGen(michelin.length)]
+    if (!randomRestaurant) {
+      return null;
+    }
   return (
     <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
       <div className="absolute inset-0 -z-10 overflow-hidden">
@@ -54,9 +50,8 @@ return null
         <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
           <div className="lg:pr-4">
             <div className="lg:max-w-lg">
-
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
-                {randomRestaurant.Name}</h3>
+              {randomRestaurant.Name}</h3>
               <p className="mt-6 text-xl leading-8 text-gray-700">
                 {randomRestaurant.Address}
               </p>
@@ -64,7 +59,7 @@ return null
                 {randomRestaurant.Cuisine}
               </p>
               <p className="mt-6 text-xl leading-8 text-gray-700">
-                Star Rating: {starFunction(setRandomRestaurant)}
+                Star Rating: {starFunction(randRestaurant)}
               </p>
             </div>
           </div>
@@ -89,5 +84,4 @@ return null
     </div>
   )
 }
-
 export default SingleResultCard;

@@ -9,7 +9,7 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX;
 
 function Maps({ userLocation }) {
   const mapContainerRef = useRef(null);
-
+  console.log("in the maps component", userLocation);
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -19,50 +19,82 @@ function Maps({ userLocation }) {
     });
 
     //Filtering restaurants within a radius
-    const radius = 10000;
-    const filteredRestaurants = michelinData.filter((restaurant) => {
-      const distance = getDistance(
-        userLocation.latitude,
-        userLocation.longitude,
-        restaurant.Latitude,
-        restaurant.Longitude
-      );
-      return distance <= radius;
+    const radius = 10;
+    // const filteredRestaurants = michelinData.filter(async (restaurant) => {
+    //   const to = [userLocation.longitude, userLocation.latitude];
+    //   const options = { units: "kilometers" };
+    //   const from = [restaurant["Longitude"], restaurant["Latitude"]];
+    //   const distance = await turf.distance(to, from, options);
+    //   if (distance <= radius) {
+    //     console.log("what is", restaurant);
+    //     console.log("this is distance", distance);
+    //     // return await restaurant;
+    //   }
+    // });
+
+    // console.log(filteredRestaurants);
+
+    const to = [userLocation.longitude, userLocation.latitude];
+    const options = { units: "kilometers" };
+
+    const updatedRestaurants = michelinData.filter((restaurant) => {
+      const from = [restaurant["Longitude"], restaurant["Latitude"]];
+      const distance = turf.distance(to, from, options);
+      if (distance < radius) {
+        console.log(restaurant);
+        return restaurant;
+      }
     });
 
-    //Adding markers only on the filtered restaurants
-    filteredRestaurants.forEach((restaurant) => {
+    console.log(updatedRestaurants);
+    updatedRestaurants.forEach((restaurant) => {
       new mapboxgl.Marker()
         .setLngLat([restaurant.Longitude, restaurant.Latitude])
         .addTo(map);
     });
+    // const filteredRestaurants = michelinData.filter((restaurant) => {
+    //   const distance = getDistance(
+    //     userLocation.latitude,
+    //     userLocation.longitude,
+    //     restaurant.Latitude,
+    //     restaurant.Longitude
+    //   );
+    //   return distance <= radius;
+    // });
+
+    //Adding markers only on the filtered restaurants
+    // filteredRestaurants.forEach((restaurant) => {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
+    //     .addTo(map);
+    // });
 
     //Adding a circle around the radius on map
-    map.addLayer({
-      id: "user-radius",
-      type: "circle",
-      paint: {
-        "circle-radius": radius,
-        "circle-color": "#007cbf",
-        "circle-opacity": 0.3,
-        "circle-stroke-width": 2,
-        "circle-stroke-color": "#007cbf",
-      },
-      source: {
-        type: "geojson",
-        data: {
-          type: "Feature",
-          geometry: {
-            type: "Point",
-            coordinates: [userLocation.longitude, userLocation.latitude],
-          },
-        },
-      },
-    });
+    // map.addLayer({
+    //   id: "user-radius",
+    //   type: "circle",
+    //   paint: {
+    //     "circle-radius": radius,
+    //     "circle-color": "#007cbf",
+    //     "circle-opacity": 0.3,
+    //     "circle-stroke-width": 2,
+    //     "circle-stroke-color": "#007cbf",
+    //   },
+    //   source: {
+    //     type: "geojson",
+    //     data: {
+    //       type: "Feature",
+    //       geometry: {
+    //         type: "Point",
+    //         coordinates: [userLocation.longitude, userLocation.latitude],
+    //       },
+    //     },
+    //   },
+    // });
 
-    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    // map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-    return () => map.remove();
+    // return () => map.remove();
   }, [userLocation]);
 
   // // Iterates through the JSON file and places a marker for each restaurant location

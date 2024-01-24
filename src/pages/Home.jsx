@@ -16,6 +16,8 @@ function Home() {
     michelinData[randomIndGen(michelinData.length)]
   );
 
+  const [threeStarToggle, setThreeStarToggle] = useState(true)
+
   const [renderedComponent, setRenderedComponent] =
     useState("SingleResultCard");
 
@@ -32,7 +34,12 @@ function Home() {
   };
 
   const toggleThreeStars = () => {
-    console.log(resultFilter("Award", "3 Stars"));
+    if(threeStarToggle){
+      setThreeStarToggle(!threeStarToggle)
+      console.log(resultFilter("Award", "3 Stars"));
+    } else {
+      setThreeStarToggle(!threeStarToggle)
+       }
   };
 
   return (

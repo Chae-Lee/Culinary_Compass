@@ -70,7 +70,7 @@ export default function SearchOptions({
 
         <label className="relative inline-flex items-center cursor-pointer">
           <input
-            onClick={toggle3Stars}
+            onChange={toggle3Stars}
             type="checkbox"
             value=""
             className="sr-only peer"

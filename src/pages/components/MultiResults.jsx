@@ -53,6 +53,14 @@ export default function MultiResults({toggleThreeStars}) {
               </li>
             ))}
         </ul>
+        {/* TEST DIV FOR FILTER */}
+        <div>
+            <ul>
+              {toggleThreeStars.map(
+                <li>{restaurants.Award}</li>
+              )}
+            </ul>
+        </div>
       </div>
     )
 }}

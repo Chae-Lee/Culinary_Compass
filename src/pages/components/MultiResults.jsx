@@ -25,14 +25,14 @@ export default function MultiResults(props) {
     // if data is no longer loading, return the results
   } else {
     return (
-      <div className="max-h-[750px] overflow-y-auto">
+      <div className="max-h-[2044px] overflow-y-auto p-4 rounded-lg shadow-lg bg-white">
         {/* Creates a UL for all results */}
         <ul role="list" className="divide-y divide-gray-100">
           {michelinData.filter((michelinData) => {
             return michelinData.Country.includes(props.selectedCountry);
           }).map((michelinData) => (
               <li key={michelinData.ID}>
-                <a href ={michelinData.Url}>
+                <a href ={michelinData.Url} target="_blank">
                   <div className="py-5">
                     <div className="flex min-w-0 gap-x-4">
                     {/* CuisineImage */}

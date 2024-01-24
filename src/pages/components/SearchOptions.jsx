@@ -48,11 +48,11 @@ export default function SearchOptions({
   };
 
   return (
-    <div className="lg:pr-8 lg:pt-4">
+    <div className="lg:pr-8 lg:pt-4 rounded-lg shadow-lg p-4 bg-white">
       <div className="lg:max-w-lg">
-        <h2 className="text-base font-semibold leading-7 text-indigo-600">
+        <h1 className="font-semibold leading-7 text-[#1683d1]">
           Culinary Compass
-        </h2>
+        </h1>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Find your next culinary experience, anywhere in the world
         </p>
@@ -80,10 +80,10 @@ export default function SearchOptions({
 
       {/* COUNTRY SEARCH */}
 
-      <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
+      <div className="rounded-md custom-blue px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
             <Combobox value={selectedCountry} onChange={setSelectedCountry}>
-                <Combobox.Input className="rounded-md bg-indigo-600 h-full w-full"
-                    placeholder="Choose a country"
+                <Combobox.Input className="rounded-md custom-blue h-full w-full"
+                    placeholder="Type a country"
                     onChange={(event) => setSearch(event.target.value)} />
                 <Combobox.Options className="bg-indigo-400">
                     {filteredCountries.map((country) => (

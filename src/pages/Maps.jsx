@@ -5,6 +5,7 @@ import michelinData from "../michelin.json";
 import "../pages/Maps.css";
 import userLocation from "../UserLocation";
 
+//Environment variable for API token
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX;
 
 function Maps({ userLocation }) {
@@ -22,11 +23,14 @@ function Maps({ userLocation }) {
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
     //Adding a marker on user's current location
-    new mapboxgl.Marker()
+    new mapboxgl.Marker({
+      color: "#9966CC",
+      draggable: true,
+    })
       .setLngLat([userLocation.longitude, userLocation.latitude])
       .setPopup(
         new mapboxgl.Popup({ offset: 25 }) // add popups
-          .setHTML(`<h3>Your Current Location</h3>`)
+          .setHTML(`<h3><b>Your Current Location</b></h3>`)
       )
       .addTo(map);
 
@@ -45,34 +49,26 @@ function Maps({ userLocation }) {
     });
 
     //Adding markers only on the filtered restaurants
-    console.log(updatedRestaurants);
     updatedRestaurants.forEach((restaurant) => {
-      new mapboxgl.Marker()
+      new mapboxgl.Marker({
+        color: "#FF7F50",
+        draggable: true,
+      })
         .setLngLat([restaurant.Longitude, restaurant.Latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 25 }) // add popups
             .setHTML(
-              `<h3>${restaurant.Name}</h3><p>${restaurant.Address}</p>${restaurant.Price}<p>Cuisine: ${restaurant.Cuisine}<p>`
+              `<h3><b>${restaurant.Name}</b></h3>
+              <p>${restaurant.Address}</p>
+              <p>${restaurant.Price}</p>
+              <p>Cuisine: ${restaurant.Cuisine}</p>
+              <p> ${restaurant.Award}</p>
+              <a href=${restaurant.WebsiteUrl}><b>Visit Website</b></a>
+              `
             )
         )
         .addTo(map);
     });
-
-    //adding functionality to the map marker
-    map.on("click", (event) => {
-      // If the user clicked on one of your markers, get its information.
-      const features = map.queryRenderedFeatures(event.point, {
-        layers: ["YOUR_LAYER_NAME"], // replace with your layer name
-      });
-      if (!features.length) {
-        return;
-      }
-      const feature = features[0];
-
-      // Code from the next step will go here.
-    });
-
-    // return () => map.remove();
   }, [userLocation]);
 
   return (

@@ -31,23 +31,25 @@ export default function MultiResults(props) {
           {michelinData.filter((michelinData) => {
             return michelinData.Country.includes(props.selectedCountry);
           }).map((michelinData) => (
-              <li key={michelinData.ID} className="flex justify-between gap-x-6 py-5">
-                <div className="flex min-w-0 gap-x-4">
-                {/* CuisineImage */}
-                <img className="h-24 w-24 flex-none rounded-md bg-gray-50 object-cover" src={michelinData.CuisineImage} alt="" />      
-                  {/* Restaurant Info */}
-                  <div className="min-w-0 flex-auto">
-                    <p className="text-sm font-semibold leading-6 text-gray-900">{michelinData.Name}</p>
-                    <p className="mt-1 truncate text-xs leading-5 text-gray-500">{michelinData.Cuisine}</p>           
-                    <img className="h-4 mt-1.5 mb-1.5" src={michelinData.AwardIcon} alt="" />
-                    <a className="mt-1 truncate text-xs leading-5 text-gray-500 underline" href ={michelinData.Url}>Read the Michelin Guide</a>
+              <li key={michelinData.ID}>
+                <a href ={michelinData.Url}>
+                  <div className="py-5">
+                    <div className="flex min-w-0 gap-x-4">
+                    {/* CuisineImage */}
+                      <img className="h-24 w-24 flex-none rounded-md bg-gray-50 object-cover" src={michelinData.CuisineImage} alt="" />      
+                      {/* Restaurant Info */}
+                      <div className="min-w-0 flex-auto">
+                        <p className="text-sm font-semibold leading-6 text-gray-900">{michelinData.Name}</p>
+                        <p className="mt-1 truncate text-xs leading-5 text-gray-500">{michelinData.Cuisine}</p>           
+                        <img className="h-4 mt-1.5 mb-1.5" src={michelinData.AwardIcon} alt="" />
+                      </div>
+                      <div className="min-w-0">
+                        <p className=" text-right hidden shrink-0 sm:flex sm:flex-col sm:items-end pr-4 text-sm leading-6 text-gray-900">{michelinData.Location}</p>
+                        <p className="hidden shrink-0 sm:flex sm:flex-col sm:items-end pr-4 text-xs leading-5 text-gray-500">{michelinData.Country}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                {/* Restaurant Location */}
-                <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end pr-4">
-                  <p className="text-sm leading-6 text-gray-900 italic">{michelinData.Location}</p>
-                  <p className="text-xs leading-5 text-gray-500 italic">{michelinData.Country}</p>
-                </div>
+                </a>
               </li>
             ))}
         </ul>

@@ -21,16 +21,16 @@ function Maps({ userLocation }) {
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
     //Adding a marker on user's current location
-    const userLocationMap = (userLocation) => {
-      new mapboxgl.Marker()
-        .setLngLat([userLocation.longitude, userLocation.latitude])
-        .setPopup(
-          new mapboxgl.Popup({ offset: 25 }) // add popups
-            .setHTML(`<h3>Your Current Location</h3>`)
-        )
-        .addTo(map);
-    };
-    userLocationMap();
+    // function userLocationMap(userLocation) {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([userLocation.longitude, userLocation.latitude])
+    //     .setPopup(
+    //       new mapboxgl.Popup({ offset: 25 }) // add popups
+    //         .setHTML(`<h3>Your Current Location</h3>`)
+    //     )
+    //     .addTo(map);
+    // }
+    // userLocationMap();
 
     //Filtering restaurants within a radius
     const radius = 10; //this is distance in km
@@ -59,29 +59,6 @@ function Maps({ userLocation }) {
         )
         .addTo(map);
     });
-
-    // //Adding a circle around the radius on map
-    // map.addLayer({
-    //   id: "user-radius",
-    //   type: "circle",
-    //   paint: {
-    //     "circle-radius": radius,
-    //     "circle-color": "#007cbf",
-    //     "circle-opacity": 0.3,
-    //     "circle-stroke-width": 2,
-    //     "circle-stroke-color": "#007cbf",
-    //   },
-    //   source: {
-    //     type: "geojson",
-    //     data: {
-    //       type: "Feature",
-    //       geometry: {
-    //         type: "Point",
-    //         coordinates: [userLocation.longitude, userLocation.latitude],
-    //       },
-    //     },
-    //   },
-    // });
 
     //adding functionality to the map marker
     map.on("click", (event) => {

@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import michelinData from "/src/michelin.json";
 import LoadingIcon from "./LoadingIcon";
-import michelin from "../../michelin.json"
 
 export default function MultiResults(props) {
 

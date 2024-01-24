@@ -9,9 +9,3 @@ button, .custom-blue {
 .custom-home {
     background-color: #eef5fb;
 }
-
-.custom-bg {
-    background-image: url(/images/background.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-}

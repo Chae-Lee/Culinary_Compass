@@ -32,7 +32,7 @@ export default function MultiResults(props) {
             return michelinData.Country.includes(props.selectedCountry);
           }).map((michelinData) => (
               <li key={michelinData.ID}>
-                <a href ={michelinData.Url}>
+                <a href ={michelinData.Url} target="_blank">
                   <div className="py-5">
                     <div className="flex min-w-0 gap-x-4">
                     {/* CuisineImage */}

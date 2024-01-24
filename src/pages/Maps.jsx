@@ -18,7 +18,9 @@ function Maps({ userLocation }) {
       zoom: 10,
     });
 
+    //map zoom in/out control
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
     //Adding a marker on user's current location
     new mapboxgl.Marker()
       .setLngLat([userLocation.longitude, userLocation.latitude])

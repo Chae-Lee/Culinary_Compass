@@ -144,12 +144,15 @@ function UserLocation() {
           </div>
         </Dialog>
       </Transition.Root>
-      <iframe id="iframeId" height="400px" width="600px"></iframe>
-      {userLocation === null ? (
-        <div> no location </div>
-      ) : (
-        <Maps userLocation={userLocation} />
-      )}
+      {/* <iframe id="iframeId" height="400px" width="600px"></iframe> */}
+      <div id="iframeId">
+        {userLocation === null ? (
+          <div> Loading... </div>
+        ) : (
+          <Maps userLocation={userLocation} />
+        )}
+      </div>
+
       {/* {userLocation && <Maps userLocation={userLocation} />} */}
     </div>
   );

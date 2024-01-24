@@ -20,6 +20,18 @@ function Maps({ userLocation }) {
 
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
 
+    //Adding a marker on user's current location
+    const userLocationMap = (userLocation) => {
+      new mapboxgl.Marker()
+        .setLngLat([userLocation.longitude, userLocation.latitude])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(`<h3>Your Current Location</h3>`)
+        )
+        .addTo(map);
+    };
+    userLocationMap();
+
     //Filtering restaurants within a radius
     const radius = 10; //this is distance in km
     const to = [userLocation.longitude, userLocation.latitude];
@@ -29,7 +41,7 @@ function Maps({ userLocation }) {
       const from = [restaurant["Longitude"], restaurant["Latitude"]];
       const distance = turf.distance(to, from, options);
       if (distance < radius) {
-        console.log(restaurant);
+        // console.log(restaurant);
         return restaurant;
       }
     });
@@ -39,6 +51,12 @@ function Maps({ userLocation }) {
     updatedRestaurants.forEach((restaurant) => {
       new mapboxgl.Marker()
         .setLngLat([restaurant.Longitude, restaurant.Latitude])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<h3>${updatedRestaurants.Name}</h3><p>${updatedRestaurants.Address}</p>${updatedRestaurants.Price}<p>${updatedRestaurants.AwardIcon}<p>`
+            )
+        )
         .addTo(map);
     });
 

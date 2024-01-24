@@ -2,6 +2,7 @@ import React from "react";
 import { Fragment, useRef, useState, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { MapPinIcon } from "@heroicons/react/24/outline";
+import Maps from "./pages/Maps";
 
 // Function to fetch user's current geolocation when the "Allow" button on the dialog box is clicked.
 function UserLocation() {
@@ -14,6 +15,7 @@ function UserLocation() {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
       console.log("Latitude:", userLocation.latitude);
       console.log("Longitude:", userLocation.longitude);
+      //fetching user location and displaying on map
       const iframeData = document.getElementById("iframeId");
       iframeData.src = `https://maps.google.com/maps?q=${userLocation.latitude}, ${userLocation.longitude}&h1=es;&output=embed`;
     }
@@ -143,6 +145,12 @@ function UserLocation() {
         </Dialog>
       </Transition.Root>
       <iframe id="iframeId" height="400px" width="600px"></iframe>
+      {userLocation === null ? (
+        <div> no location </div>
+      ) : (
+        <Maps userLocation={userLocation} />
+      )}
+      {/* {userLocation && <Maps userLocation={userLocation} />} */}
     </div>
   );
 }

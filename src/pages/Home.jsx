@@ -3,44 +3,37 @@ import { useState } from "react";
 import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/SingleResultCard";
-import Maps from "./Maps";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
 import resultFilter from "../utils/starFilters";
 
-const randRestaurant = michelinData[randomIndGen(michelinData.length)]
+const randRestaurant = michelinData[randomIndGen(michelinData.length)];
 // Home page.
 function Home() {
   // Control the state i.e. which results card needs to be shown, with the restaurants card as the default
-  const [restaurant, setRestaurant] = useState(michelinData[randomIndGen(michelinData.length)])
+  const [restaurant, setRestaurant] = useState(
+    michelinData[randomIndGen(michelinData.length)]
+  );
 
-  const [renderedComponent, setRenderedComponent] = useState("SingleResultCard");
+  const [renderedComponent, setRenderedComponent] =
+    useState("SingleResultCard");
 
-  const [threeStarToggle, setThreeStarToggle] = useState(false)
-  
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
-  
-  const clickTestButton = (component) => {
-    setRenderedComponent(component)
-  };
-  
-  
-  // const handleClick = (restaurant) => {
-  //   setRestaurant(restaurant)
-  //   console.log()
-  // };
-  /* Working toggle switch */
-  const toggleThreeStars = (results) => {
-      setThreeStarToggle(!threeStarToggle)
-      if(threeStarToggle === false){
-        return(results('Award', '3 Stars'))
-      } else {
-        null
-      }
-  }
 
-console.log(threeStarToggle)
+  const clickTestButton = (component) => {
+    setRenderedComponent(component);
+    console.log(component);
+  };
+
+  const handleClick = (restaurant) => {
+    setRestaurant(restaurant);
+    console.log();
+  };
+
+  const toggleThreeStars = () => {
+    console.log(resultFilter("Award", "3 Stars"));
+  };
 
   return (
     <div>
@@ -51,8 +44,8 @@ console.log(threeStarToggle)
             {/* SEARCH BOX COMPONENT */}
             <SearchOptions
               testButtonClick={clickTestButton}
-              //  clickEvent={() => handleClick('randRestaurant')}
-               toggle3Stars={toggleThreeStars}
+              clickEvent={() => handleClick("randRestaurant")}
+              toggle3Stars={toggleThreeStars}
             />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 
@@ -66,7 +59,6 @@ console.log(threeStarToggle)
             {/* <MultiResults />
 
             <SingleResultCard /> */}
-            <Maps restaurantData={michelinData} userLocation={userLocation} />
           </div>
         </div>
       </div>

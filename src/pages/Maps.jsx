@@ -1,48 +1,117 @@
-import React, { useState, useEffect } from "react";
-import userLocation from "../UserLocation";
+import React, { useEffect, useRef } from "react";
+import mapboxgl from "mapbox-gl";
+import "mapbox-gl/dist/mapbox-gl.css";
 import michelinData from "../michelin.json";
+import "../pages/Maps.css";
+import userLocation from "../UserLocation";
 
-function Maps({ restaurantData, userLocation }) {
-  //fetching lng/lat data from michelin.json file (KEEP)
-  michelinData.map((michelinData) => {
-    const restaurantLongitude = michelinData.Longitude;
-    const restaurantLatitude = michelinData.Latitude;
-    const restaurantLocation = [restaurantLongitude, restaurantLatitude];
-    let { Longitude, Latitude } = michelinData;
-    // console.log(Longitude, Latitude);
-  });
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX;
 
-  // iterating through the michelin.json data and displaying on the map (KEEP)
-  // useEffect(() => {
-  //   michelinData.forEach(function (restaurant) {
-  //     console.log(
-  //       `this is the Longitude: ${restaurant.Longitude}, Latitude ${restaurant.Latitude}`
-  //     );
-  //     const iframeData = document.getElementById("iframeId");
-  //     iframeData.src = `https://maps.google.com/maps?q=${restaurant.Latitude}, ${restaurant.Longitude}&h1=es;&output=embed`;
-  //   });
-  // }, [michelinData]);
-
-  // fetching user location and displaying on map (testing)
-  // useEffect(() => {
-  //   const iframeData = document.getElementById("iframeId");
-  //   iframeData.src = `https://maps.google.com/maps?q=${userLocation.Latitude}, ${userLocation.Longitude}&h1=es;&output=embed`;
-  // }, [userLocation]);
-
+function Maps({ userLocation }) {
+  const mapContainerRef = useRef(null);
+  console.log("in the maps component", userLocation);
   useEffect(() => {
-    if (userLocation) {
-      console.log(
-        "User's Location",
-        userLocation.latitude,
-        userLocation.longitude
-      );
-    }
-  }, [userLocation, restaurantData]);
+    const map = new mapboxgl.Map({
+      container: mapContainerRef.current,
+      style: "mapbox://styles/mapbox/streets-v12",
+      center: [userLocation.longitude, userLocation.latitude], // Use the first restaurant's coordinates as the initial center
+      zoom: 10,
+    });
 
-  //KEEP
+    //Filtering restaurants within a radius
+    const radius = 10;
+    // const filteredRestaurants = michelinData.filter(async (restaurant) => {
+    //   const to = [userLocation.longitude, userLocation.latitude];
+    //   const options = { units: "kilometers" };
+    //   const from = [restaurant["Longitude"], restaurant["Latitude"]];
+    //   const distance = await turf.distance(to, from, options);
+    //   if (distance <= radius) {
+    //     console.log("what is", restaurant);
+    //     console.log("this is distance", distance);
+    //     // return await restaurant;
+    //   }
+    // });
+
+    // console.log(filteredRestaurants);
+
+    const to = [userLocation.longitude, userLocation.latitude];
+    const options = { units: "kilometers" };
+
+    const updatedRestaurants = michelinData.filter((restaurant) => {
+      const from = [restaurant["Longitude"], restaurant["Latitude"]];
+      const distance = turf.distance(to, from, options);
+      if (distance < radius) {
+        console.log(restaurant);
+        return restaurant;
+      }
+    });
+
+    console.log(updatedRestaurants);
+    updatedRestaurants.forEach((restaurant) => {
+      new mapboxgl.Marker()
+        .setLngLat([restaurant.Longitude, restaurant.Latitude])
+        .addTo(map);
+    });
+    // const filteredRestaurants = michelinData.filter((restaurant) => {
+    //   const distance = getDistance(
+    //     userLocation.latitude,
+    //     userLocation.longitude,
+    //     restaurant.Latitude,
+    //     restaurant.Longitude
+    //   );
+    //   return distance <= radius;
+    // });
+
+    //Adding markers only on the filtered restaurants
+    // filteredRestaurants.forEach((restaurant) => {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
+    //     .addTo(map);
+    // });
+
+    //Adding a circle around the radius on map
+    // map.addLayer({
+    //   id: "user-radius",
+    //   type: "circle",
+    //   paint: {
+    //     "circle-radius": radius,
+    //     "circle-color": "#007cbf",
+    //     "circle-opacity": 0.3,
+    //     "circle-stroke-width": 2,
+    //     "circle-stroke-color": "#007cbf",
+    //   },
+    //   source: {
+    //     type: "geojson",
+    //     data: {
+    //       type: "Feature",
+    //       geometry: {
+    //         type: "Point",
+    //         coordinates: [userLocation.longitude, userLocation.latitude],
+    //       },
+    //     },
+    //   },
+    // });
+
+    // map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    // return () => map.remove();
+  }, [userLocation]);
+
+  // // Iterates through the JSON file and places a marker for each restaurant location
+  // michelinData.forEach((restaurant) => {
+  //   new mapboxgl.Marker()
+  //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
+  //     .addTo(map);
+  // });
+
+  //   return () => map.remove();
+  // }, []);
+
   return (
     <div>
-      <iframe id="iframeId" height="400px" width="600px"></iframe>
+      <div className="sidebarStyle">
+        <div className="map-container" ref={mapContainerRef}></div>
+      </div>
     </div>
   );
 }

@@ -18,22 +18,10 @@ function Maps({ userLocation }) {
       zoom: 10,
     });
 
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
     //Filtering restaurants within a radius
-    const radius = 10;
-    // const filteredRestaurants = michelinData.filter(async (restaurant) => {
-    //   const to = [userLocation.longitude, userLocation.latitude];
-    //   const options = { units: "kilometers" };
-    //   const from = [restaurant["Longitude"], restaurant["Latitude"]];
-    //   const distance = await turf.distance(to, from, options);
-    //   if (distance <= radius) {
-    //     console.log("what is", restaurant);
-    //     console.log("this is distance", distance);
-    //     // return await restaurant;
-    //   }
-    // });
-
-    // console.log(filteredRestaurants);
-
+    const radius = 10; //this is distance in km
     const to = [userLocation.longitude, userLocation.latitude];
     const options = { units: "kilometers" };
 
@@ -46,30 +34,15 @@ function Maps({ userLocation }) {
       }
     });
 
+    //Adding markers only on the filtered restaurants
     console.log(updatedRestaurants);
     updatedRestaurants.forEach((restaurant) => {
       new mapboxgl.Marker()
         .setLngLat([restaurant.Longitude, restaurant.Latitude])
         .addTo(map);
     });
-    // const filteredRestaurants = michelinData.filter((restaurant) => {
-    //   const distance = getDistance(
-    //     userLocation.latitude,
-    //     userLocation.longitude,
-    //     restaurant.Latitude,
-    //     restaurant.Longitude
-    //   );
-    //   return distance <= radius;
-    // });
 
-    //Adding markers only on the filtered restaurants
-    // filteredRestaurants.forEach((restaurant) => {
-    //   new mapboxgl.Marker()
-    //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
-    //     .addTo(map);
-    // });
-
-    //Adding a circle around the radius on map
+    // //Adding a circle around the radius on map
     // map.addLayer({
     //   id: "user-radius",
     //   type: "circle",
@@ -92,20 +65,22 @@ function Maps({ userLocation }) {
     //   },
     // });
 
-    // map.addControl(new mapboxgl.NavigationControl(), "top-right");
+    //adding functionality to the map marker
+    map.on("click", (event) => {
+      // If the user clicked on one of your markers, get its information.
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["YOUR_LAYER_NAME"], // replace with your layer name
+      });
+      if (!features.length) {
+        return;
+      }
+      const feature = features[0];
+
+      // Code from the next step will go here.
+    });
 
     // return () => map.remove();
   }, [userLocation]);
-
-  // // Iterates through the JSON file and places a marker for each restaurant location
-  // michelinData.forEach((restaurant) => {
-  //   new mapboxgl.Marker()
-  //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
-  //     .addTo(map);
-  // });
-
-  //   return () => map.remove();
-  // }, []);
 
   return (
     <div>

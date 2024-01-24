@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import UserLocation from "../../UserLocation";
+import UserLocation from "../../UserLocation";
 import { Combobox } from '@headlessui/react'
 import michelinData from "../../michelin.json";
 import LoadingIcon from "./LoadingIcon";
@@ -97,11 +97,11 @@ export default function SearchOptions({
         </div>
         <MultiResults selectedCountry={selectedCountry} />
 
-{/* Below lines commented out for now due to same 'country' term being used */}
+Below lines commented out for now due to same 'country' term being used */}
       {/* <SingleResultCard
         country={country}
         clickEvent={clickEvent}
-      /> */}
+      />
 
       {/* NEAR ME */}
 

@@ -4,7 +4,7 @@ import SearchOptions from "./components/SearchOptions";
 import MultiResults from "./components/MultiResults";
 import SingleResultCard from "./components/SingleResultCard";
 import michelinData from "../michelin.json";
-import userLocation from "../UserLocation";
+// import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
 import resultFilter from "../utils/starFilters";
 

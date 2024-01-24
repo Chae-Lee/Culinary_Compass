@@ -18,6 +18,8 @@ function Home() {
 
   const [threeStarToggle, setThreeStarToggle] = useState(true)
 
+  const [filteredResults, setFilteredResults] = useState()
+
   const [renderedComponent, setRenderedComponent] =
     useState("SingleResultCard");
 
@@ -36,7 +38,9 @@ function Home() {
   const toggleThreeStars = () => {
     if(threeStarToggle){
       setThreeStarToggle(!threeStarToggle)
-      console.log(resultFilter("Award", "3 Stars"));
+      // change name later!!
+      const list = resultFilter("Award", "3 Stars");
+      setFilteredResults(list)
     } else {
       setThreeStarToggle(!threeStarToggle)
        }
@@ -63,9 +67,11 @@ function Home() {
             ) : null}
             {renderedComponent === "MultiResults" ? <MultiResults /> : null}
 
-            {/* <MultiResults />
+             <MultiResults 
+             toggleThreeStars={toggleThreeStars}
+             filteredResults={filteredResults}/>
 
-            <SingleResultCard /> */}
+            {/* <SingleResultCard /> */ }
           </div>
         </div>
       </div>

@@ -22,11 +22,11 @@ export default function SearchOptions({
     setRandomRestaurant(randRestaurant);
   };
   return (
-    <div className="lg:pr-8 lg:pt-4">
+    <div className="lg:pr-8 lg:pt-4 rounded-lg shadow-lg p-4 bg-white">
       <div className="lg:max-w-lg">
-        <h2 className="text-base font-semibold leading-7 text-indigo-600">
+        <h1 className="font-semibold leading-7 text-[#1683d1]">
           Culinary Compass
-        </h2>
+        </h1>
         <p className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
           Find your next culinary experience, anywhere in the world
         </p>

@@ -15,16 +15,19 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
+
+
 function NavBar() {
+    const [open, setOpen] = useState(false);
     return (
-    <Disclosure as="nav" className="bg-gray-800">
+    <Disclosure as="nav" className="">
         {({ open }) => (
         <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
             <div className="relative flex h-16 items-center justify-between">
                 <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
                 {/* Mobile menu button*/}
-                <NavLink className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
+                <NavLink className="relative inline-flex items-center justify-center rounded-md p-2 text-black-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white">
                     <span className="absolute -inset-0.5" />
                     <span className="sr-only">Open main menu</span>
                     {open ? (
@@ -38,7 +41,7 @@ function NavBar() {
                 <div className="flex flex-shrink-0 items-center">
                     <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+                    src="/images/logo.png"
                     alt="Your Company"
                     />
                 </div>
@@ -49,7 +52,7 @@ function NavBar() {
                         key={item.name}
                         to={item.to}
                         className={classNames(
-                            item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                            item.current ? 'bg-gray-900 text-white' : 'text-black-300 hover:bg-gray-700 hover:text-white',
                             'rounded-md px-3 py-2 text-sm font-medium'
                         )}
                         aria-current={item.current ? 'page' : undefined}

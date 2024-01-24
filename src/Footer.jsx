@@ -8,7 +8,7 @@ function Footer() {
         <>
                     {/* <div className="px-2 sm:px-6 lg:px-8"></div> */}
             <div className="max-w-full">
-                <div className="flex items-center justify-between mx-auto w-full h-6 p-4 py-2 px-8 py-8 bg-gray-800">
+                <div className="flex items-center justify-between mx-auto w-full h-6 p-4 py-2 px-8 py-8 custom-home">
                     <div>
                         <span className="flex text-sm text-gray-500 sm:text-center dark:text-gray-400">Culinary Compass</span>
                     </div>

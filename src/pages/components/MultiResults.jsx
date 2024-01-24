@@ -29,7 +29,7 @@ export default function MultiResults() {
     // if data is no longer loading, return the results
   } else {
     return (
-      <div className="max-h-[750px] overflow-y-auto">
+      <div className="max-h-[2044px] overflow-y-auto p-4 rounded-lg shadow-lg bg-white">
         {/* Creates a UL for all results */}
         <ul role="list" className="divide-y divide-gray-100">
           {restaurants.filter((restaurant) => restaurant.Country = testCountry).map((restaurants) => (
@@ -47,8 +47,8 @@ export default function MultiResults() {
                 </div>
                 {/* Restaurant Location */}
                 <div className="hidden shrink-0 sm:flex sm:flex-col sm:items-end pr-4">
-                  <p className="text-sm leading-6 text-gray-900">{restaurants.Location}</p>
-                  <p className="text-xs leading-5 text-gray-500">{restaurants.Country}</p>
+                  <p className="text-sm leading-6 text-gray-900 italic">{restaurants.Location}</p>
+                  <p className="text-xs leading-5 text-gray-500 italic">{restaurants.Country}</p>
                 </div>
               </li>
             ))}

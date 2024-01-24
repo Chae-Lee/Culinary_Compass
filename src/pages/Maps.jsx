@@ -18,22 +18,22 @@ function Maps({ userLocation }) {
       zoom: 10,
     });
 
+    map.addControl(new mapboxgl.NavigationControl(), "top-right");
+
+    //Adding a marker on user's current location
+    // function userLocationMap(userLocation) {
+    //   new mapboxgl.Marker()
+    //     .setLngLat([userLocation.longitude, userLocation.latitude])
+    //     .setPopup(
+    //       new mapboxgl.Popup({ offset: 25 }) // add popups
+    //         .setHTML(`<h3>Your Current Location</h3>`)
+    //     )
+    //     .addTo(map);
+    // }
+    // userLocationMap();
+
     //Filtering restaurants within a radius
-    const radius = 10;
-    // const filteredRestaurants = michelinData.filter(async (restaurant) => {
-    //   const to = [userLocation.longitude, userLocation.latitude];
-    //   const options = { units: "kilometers" };
-    //   const from = [restaurant["Longitude"], restaurant["Latitude"]];
-    //   const distance = await turf.distance(to, from, options);
-    //   if (distance <= radius) {
-    //     console.log("what is", restaurant);
-    //     console.log("this is distance", distance);
-    //     // return await restaurant;
-    //   }
-    // });
-
-    // console.log(filteredRestaurants);
-
+    const radius = 10; //this is distance in km
     const to = [userLocation.longitude, userLocation.latitude];
     const options = { units: "kilometers" };
 
@@ -41,71 +41,41 @@ function Maps({ userLocation }) {
       const from = [restaurant["Longitude"], restaurant["Latitude"]];
       const distance = turf.distance(to, from, options);
       if (distance < radius) {
-        console.log(restaurant);
+        // console.log(restaurant);
         return restaurant;
       }
     });
 
+    //Adding markers only on the filtered restaurants
     console.log(updatedRestaurants);
     updatedRestaurants.forEach((restaurant) => {
       new mapboxgl.Marker()
         .setLngLat([restaurant.Longitude, restaurant.Latitude])
+        .setPopup(
+          new mapboxgl.Popup({ offset: 25 }) // add popups
+            .setHTML(
+              `<h3>${updatedRestaurants.Name}</h3><p>${updatedRestaurants.Address}</p>${updatedRestaurants.Price}<p>${updatedRestaurants.AwardIcon}<p>`
+            )
+        )
         .addTo(map);
     });
-    // const filteredRestaurants = michelinData.filter((restaurant) => {
-    //   const distance = getDistance(
-    //     userLocation.latitude,
-    //     userLocation.longitude,
-    //     restaurant.Latitude,
-    //     restaurant.Longitude
-    //   );
-    //   return distance <= radius;
-    // });
 
-    //Adding markers only on the filtered restaurants
-    // filteredRestaurants.forEach((restaurant) => {
-    //   new mapboxgl.Marker()
-    //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
-    //     .addTo(map);
-    // });
+    //adding functionality to the map marker
+    map.on("click", (event) => {
+      // If the user clicked on one of your markers, get its information.
+      const features = map.queryRenderedFeatures(event.point, {
+        layers: ["YOUR_LAYER_NAME"], // replace with your layer name
+      });
+      if (!features.length) {
+        return;
+      }
+      const feature = features[0];
 
-    //Adding a circle around the radius on map
-    // map.addLayer({
-    //   id: "user-radius",
-    //   type: "circle",
-    //   paint: {
-    //     "circle-radius": radius,
-    //     "circle-color": "#007cbf",
-    //     "circle-opacity": 0.3,
-    //     "circle-stroke-width": 2,
-    //     "circle-stroke-color": "#007cbf",
-    //   },
-    //   source: {
-    //     type: "geojson",
-    //     data: {
-    //       type: "Feature",
-    //       geometry: {
-    //         type: "Point",
-    //         coordinates: [userLocation.longitude, userLocation.latitude],
-    //       },
-    //     },
-    //   },
-    // });
-
-    // map.addControl(new mapboxgl.NavigationControl(), "top-right");
+      // Code from the next step will go here.
+    });
 
     // return () => map.remove();
   }, [userLocation]);
-
-  // // Iterates through the JSON file and places a marker for each restaurant location
-  // michelinData.forEach((restaurant) => {
-  //   new mapboxgl.Marker()
-  //     .setLngLat([restaurant.Longitude, restaurant.Latitude])
-  //     .addTo(map);
-  // });
-
-  //   return () => map.remove();
-  // }, []);
 
   return (
     <div>

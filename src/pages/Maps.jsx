@@ -19,18 +19,14 @@ function Maps({ userLocation }) {
     });
 
     map.addControl(new mapboxgl.NavigationControl(), "top-right");
-
     //Adding a marker on user's current location
-    // function userLocationMap(userLocation) {
-    //   new mapboxgl.Marker()
-    //     .setLngLat([userLocation.longitude, userLocation.latitude])
-    //     .setPopup(
-    //       new mapboxgl.Popup({ offset: 25 }) // add popups
-    //         .setHTML(`<h3>Your Current Location</h3>`)
-    //     )
-    //     .addTo(map);
-    // }
-    // userLocationMap();
+    new mapboxgl.Marker()
+      .setLngLat([userLocation.longitude, userLocation.latitude])
+      .setPopup(
+        new mapboxgl.Popup({ offset: 25 }) // add popups
+          .setHTML(`<h3>Your Current Location</h3>`)
+      )
+      .addTo(map);
 
     //Filtering restaurants within a radius
     const radius = 10; //this is distance in km
@@ -54,7 +50,7 @@ function Maps({ userLocation }) {
         .setPopup(
           new mapboxgl.Popup({ offset: 25 }) // add popups
             .setHTML(
-              `<h3>${updatedRestaurants.Name}</h3><p>${updatedRestaurants.Address}</p>${updatedRestaurants.Price}<p>${updatedRestaurants.AwardIcon}<p>`
+              `<h3>${restaurant.Name}</h3><p>${restaurant.Address}</p>${restaurant.Price}<p>Cuisine: ${restaurant.Cuisine}<p>`
             )
         )
         .addTo(map);

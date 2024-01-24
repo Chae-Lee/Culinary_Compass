@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import UserLocation from "../../UserLocation";
-import { Combobox } from '@headlessui/react'
+import ComboBox from "./ComboBox";
 import michelinData from "../../michelin.json";
 import LoadingIcon from "./LoadingIcon";
 import randomIndGen from "../../utils/randomIndex";
 import SingleResultCard from "./SingleResultCard";
-import MultiResults from "./MultiResults";
 
 export default function SearchOptions({
   testButtonClick,
@@ -14,40 +13,14 @@ export default function SearchOptions({
 }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
   const [randomRestaurant, setRandomRestaurant] = useState(null); // State to hold the random restaurant
-  const [selectedCountry, setSelectedCountry] = useState('') // State to hold country selection, set to empty upon page load.
-
-  // Random search code block
+  const handleFindNearMeClick = () => {
+    setShowUserLocation(true);
+  };
   const handleSurpriseMeClick = () => {
     const randRestaurant = michelinData[randomIndGen(michelinData.length)];
     console.log("Random Restaurant:", randRestaurant);
     setRandomRestaurant(randRestaurant);
   };
-
-  // Country search code block
-  // Create new array of unique country names only from michelin.json data.
-  let countriesData = michelinData.map((
-    { Country }) => ( Country ));
-  const [countries, setCountries] = useState(countriesData);
-  useEffect(() => {
-      const uniqueCountries = [...new Set(countries)];
-      setCountries(uniqueCountries);
-  }, []);
-  // Allow user to search, ignoring uppercase and lowercase differences.
-  console.log("Selected country =", selectedCountry);
-  const [search, setSearch] = useState('')
-  const filteredCountries =
-  search === ''
-      ? countries
-      : countries.filter((country) => {
-          return country.toLowerCase().includes(search.toLowerCase())
-      })
-
-  // Location search code block
-  const handleFindNearMeClick = () => {
-    setShowUserLocation(true);
-  };
-
-
   return (
     <div className="lg:pr-8 lg:pt-4">
       <div className="lg:max-w-lg">
@@ -80,28 +53,7 @@ export default function SearchOptions({
       />
 
       {/* COUNTRY SEARCH */}
-
-      <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
-            <Combobox value={selectedCountry} onChange={setSelectedCountry}>
-                <Combobox.Input className="rounded-md bg-indigo-600 h-full w-full"
-                    placeholder="Choose a country"
-                    onChange={(event) => setSearch(event.target.value)} />
-                <Combobox.Options className="bg-indigo-400">
-                    {filteredCountries.map((country) => (
-                        <Combobox.Option key={country} value={country}>
-                        {country}
-                        </Combobox.Option>
-                    ))}
-                </Combobox.Options>
-            </Combobox>
-        </div>
-        <MultiResults selectedCountry={selectedCountry} />
-
-Below lines commented out for now due to same 'country' term being used */}
-      {/* <SingleResultCard
-        country={country}
-        clickEvent={clickEvent}
-      />
+      <ComboBox />
 
       {/* NEAR ME */}
 

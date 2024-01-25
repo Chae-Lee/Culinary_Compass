@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function ContactUs() {
 
     const notify = () => {
-        toast.success('🦄 Wow so easy!', {
+        toast.success('Sent!', {
             position: "top-center",
             autoClose: 2000,
             hideProgressBar: true,

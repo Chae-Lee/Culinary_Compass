@@ -46,18 +46,6 @@ export default function SearchOptions({
     setShowUserLocation(true);
   };
 
-  // Star filter
-  const filteredMichelinData = michelinData.filter((result) => {
-    if (filterTextValue === '1 Star') {
-      return result.Award === '1 Star'
-    } else if (filterTextValue === '2 Stars') {
-      return result.Award === '2 Stars'
-    } else if (filterTextValue === '3 Stars') {
-      return result.Award === '3 Stars'
-    } else {
-      return result
-    }
-  })
 
   function onFilterValueSelected(filterValue) {
     setFilterTextValue(filterValue)
@@ -93,33 +81,6 @@ export default function SearchOptions({
         randomRestaurant={randomRestaurant}
         clickEvent={clickEvent}
       />
-
-      {/* COUNTRY SEARCH */}
-
-      <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
-        <Combobox value={selectedCountry} onChange={setSelectedCountry}>
-          <Combobox.Input className="rounded-md bg-indigo-600 h-full w-full"
-            placeholder="Choose a country"
-            onChange={(event) => setSearch(event.target.value)} />
-          <Combobox.Options className="bg-indigo-400">
-            {filteredCountries.map((country) => (
-              <Combobox.Option key={country} value={country}>
-                {country}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        </Combobox>
-      </div>
-
-      {/* <MultiResults
-        selectedCountry={selectedCountry}
-        starFilter={filteredMichelinData} /> */}
-
-      {/* Below lines commented out for now due to same 'country' term being used */}
-      {/* <SingleResultCard
-        country={country}
-        clickEvent={clickEvent}
-      /> */}
 
       {/* NEAR ME */}
 

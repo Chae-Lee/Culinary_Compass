@@ -71,7 +71,7 @@ export default function MultiResults() {
             <option value="2 Stars">2 Stars</option>
             <option value="3 Stars">3 Stars</option>
           </select>
-
+        <div className="max-h-96 overflow-y-auto">
           <ul role="list" className="divide-y divide-gray-100">
             {filteredMichelinData.map((michelinData) => (
               <li
@@ -94,6 +94,7 @@ export default function MultiResults() {
             </li>
           ))}
         </ul>
+        </div>
         </section>
         </>
     );

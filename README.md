@@ -65,23 +65,36 @@ Pull requests are welcome. For major changes, please open an issues first to dis
 
 # The final deployed application should look like this
 
-Homepage
-![Screenshots of Home page](./public/images/homepage.png)
-
-Random generator
-![Screenshots of Home page](./public/images/randomGenerator.png)
-
-Country Search
-![Screenshots of Home page](./public/images/countrySearch.png)
-
-Michelin star filter
-![Screenshots of Home page](./public/images/michelinStarFilter.png)
-
-Find Near Me results
-![Screenshots of Home page](./public/images/findNearMe.png)
-
-Team Page
-![Screenshots of Home page](./public/images/teamPage.png)
-
-Contact Page
-![Screenshots of Home page](./public/images/contactPage.png)
+- Homepage
+  <br>
+  ![Screenshots of Home page](./public/images/homepage.png)
+  <br>
+  <br>
+- Random generator
+  <br>
+  ![Screenshots of Home page](./public/images/randomGenerator.png)
+  <br>
+  <br>
+- Country Search
+  <br>
+  ![Screenshots of Home page](./public/images/countrySearch.png)
+  <br>
+  <br>
+- Michelin star filter
+  <br>
+  ![Screenshots of Home page](./public/images/michelinStarFilter.png)
+  <br>
+  <br>
+- Find Near Me results
+  <br>
+  ![Screenshots of Home page](./public/images/findNearMe.png)
+  <br>
+  <br>
+- Team Page
+  <br>
+  ![Screenshots of Home page](./public/images/teamPage.png)
+  <br>
+  <br>
+- Contact Page
+  <br>
+  ![Screenshots of Home page](./public/images/contactPage.png)

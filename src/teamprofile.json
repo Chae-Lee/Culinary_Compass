@@ -22,7 +22,7 @@
     "name":"Dan Green",
     "occupation":"Software Engineer",
     "image":"images/danGreen.jpg",
-    "description":"Web Developer specializing in Front End with React, JavaScript, and Node.js. Professional experience in Client Success management and Events Coordination.",
+    "description":"Web Developer specializing in Front End development with React, JavaScript, Node.js and Tailwind. Professional experience in Client Success Management and Events Coordination. Keen to explore new UI/UX trends as they emerge in the market. ",
     "github":"https://github.com/Greenie115",
     "linkedin": "https://www.linkedin.com/in/daniel-green545/"
   },
@@ -31,7 +31,7 @@
     "name":"Kate Lee",
     "occupation":"Software Engineer",
     "image":"images/kateLee.jpg",
-    "description":" Frontend Developer transitioning from HR to Web development with a unique blend of skills combining HR insights with emerging expertise in HTML, CSS and JavaScript. Self-motivated individual who is passionate about continuous learning, collaboration and delivering exceptional user experiences. Eager to leverage advancing technical skills in frontend development to contribute innovative solutions and enhance web applications.",
+    "description":" Frontend Developer transitioning from HR to Web development with a unique blend of skills combining HR insights with emerging expertise in HTML, CSS and JavaScript. Self-motivated individual who is passionate about continuous learning, collaboration and delivering exceptional user experiences. ",
     "github":"https://github.com/Chae-Lee",
     "linkedin": "https://www.linkedin.com/in/kate-chaerin-lee/"
   }

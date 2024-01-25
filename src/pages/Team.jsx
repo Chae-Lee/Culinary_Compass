@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 // Meet The Team page.
 function MeetTheTeam() {
     return (
-        <div className="bg-white py-24 sm:py-12 .p-6">
+        <div className="custom-home py-24 sm:py-12 .p-6 px-48">
         <div className="px-6 lg:px-8">
             <div className="mx-auto max-w-2xl lg:text-center">
                     <h2 className="text-center text-4xl font-bold leading-8 text-gray-900 sm:leading-9">Meet the team</h2>

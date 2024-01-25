@@ -6,10 +6,13 @@
 
 - Culinary Compass allows you to search Michelin restaurants, filtering either by those nearby or in a certain country, by how many Michelin stars they have, and even gives you the chance to be told where to go for when you are feeling spontaneous!
 
+<br>
+
 ## License
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+<br>
 ## Contents
 
 - [Description](#description)
@@ -19,6 +22,8 @@
 - [Contributions](#contributions)
 - [Tests](#tests)
 - [Questions](#questions)
+
+<br>
 
 ## Installation
 
@@ -32,6 +37,8 @@
   >
   > - Make a .env file, and name the environment variable VITE_MAPBOX
 
+<br>
+
 ## Usage
 
 - **_Culinary Compass_** welcomes you with a greeting and an explanation of how to use it.
@@ -44,6 +51,8 @@
 
 Code is written so that when the user selects different navbar tabs, corresponding information is displayed such as Home, Team and Contact that takes user to relevant pages.
 
+<br>
+
 ## Contributions
 
 - Louise Elliot : Country search functionalit & Meet the team page
@@ -54,14 +63,20 @@ Code is written so that when the user selects different navbar tabs, correspondi
 
 Pull requests are welcome. For major changes, please open an issues first to discuss what you would like to change.
 
+<br>
+
 ## Tests
 
 - To run tests, run command
   > npm test
 
+<br>
+
 ## Questions
 
 - If you have any questions about the repo, open an issue or contact the team via Linkedin provided in the Team page. You can also find more of our work on our GitHub.
+
+<br>
 
 # The final deployed application should look like this
 

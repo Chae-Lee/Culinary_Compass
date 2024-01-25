@@ -1,0 +1,38 @@
+[
+  {
+    "id":1,
+    "name":"Louise Elliott",
+    "occupation":"Software Engineer",
+    "image":"images/louiseElliott.jpg",
+    "description":"Front End Web Developer with a background in education and non-governmental organisations. Driven and always keen to learn and adapt. Effective at problem-solving, identifying areas for improvements and supporting colleagues with up-skilling and implementing change. Fluent in Spanish. Known as a conscientious professional with a keen eye for detail and a passion for making a difference.",
+    "github":"https://github.com/louise-elliott-work",
+    "linkedin": "https://www.linkedin.com/in/louise-elliott-work/"
+  },
+  {
+    "id":2,
+    "name":"Dan Whitlock",
+    "occupation":"Software Engineer",
+    "image":"images/danWhitlock.jpg",
+    "description":"I'm a Front-End Developer with a background in Art & Design, passionate about web design and functionality. I'm also a qualified Scrum Master & Project Manager with over a decade of experience delivering complex change programmes for clients in regulated environments.",
+    "github":"https://github.com/danwhitlock",
+    "linkedin": "https://www.linkedin.com/in/dan-whitlock/"
+  },
+  {
+    "id":3,
+    "name":"Dan Green",
+    "occupation":"Software Engineer",
+    "image":"images/danGreen.jpg",
+    "description":"Web Developer specializing in Front End with React, JavaScript, and Node.js. Professional experience in Client Success management and Events Coordination.",
+    "github":"https://github.com/Greenie115",
+    "linkedin": "https://www.linkedin.com/in/daniel-green545/"
+  },
+  {
+    "id":4,
+    "name":"Kate Lee",
+    "occupation":"Software Engineer",
+    "image":"images/kateLee.jpg",
+    "description":" Frontend Developer transitioning from HR to Web development with a unique blend of skills combining HR insights with emerging expertise in HTML, CSS and JavaScript. Self-motivated individual who is passionate about continuous learning, collaboration and delivering exceptional user experiences. Eager to leverage advancing technical skills in frontend development to contribute innovative solutions and enhance web applications.",
+    "github":"https://github.com/Chae-Lee",
+    "linkedin": "https://www.linkedin.com/in/kate-chaerin-lee/"
+  }
+]

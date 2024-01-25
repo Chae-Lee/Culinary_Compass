@@ -35,7 +35,7 @@ function Maps({ userLocation }) {
       .addTo(map);
 
     //Filtering restaurants within a radius
-    const radius = 10; //this is distance in km
+    const radius = 14; //this is distance in km
     const to = [userLocation.longitude, userLocation.latitude];
     const options = { units: "kilometers" };
 

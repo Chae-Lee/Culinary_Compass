@@ -147,7 +147,7 @@ function UserLocation() {
       {/* <iframe id="iframeId" height="400px" width="600px"></iframe> */}
       <div id="mapDisplay">
         {userLocation === null ? (
-          <div> Loading... </div>
+          <iframe src="https://lottie.host/embed/84c84485-2a09-445d-82cd-68fca2c8e834/7UamGNvFlM.json"></iframe>
         ) : (
           <Maps userLocation={userLocation} />
         )}

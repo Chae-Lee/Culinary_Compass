@@ -83,9 +83,9 @@ function MultiResults() {
               <option className="bg-indigo-600" value="Bib Gourmand">🅱️</option>
               <option className="bg-indigo-600" value="Green Star">🍀</option>
               <option className="bg-indigo-600" value="1 Star,Green Star">⭐🍀</option>
-              <option className="bg-indigo-600" value="2 Stars,Green Star">⭐⭐🍀r</option>
-              <option className="bg-indigo-600" value="3 Stars,Green Star">⭐⭐⭐🍀r</option>
-              <option className="bg-indigo-600" value="Bib Gourmand,Green Star">🅱️🍀r</option>
+              <option className="bg-indigo-600" value="2 Stars,Green Star">⭐⭐🍀</option>
+              <option className="bg-indigo-600" value="3 Stars,Green Star">⭐⭐⭐🍀</option>
+              <option className="bg-indigo-600" value="Bib Gourmand,Green Star">🅱️🍀</option>
             </select>
           </div>
           <div className="max-h-screen overflow-y-auto">

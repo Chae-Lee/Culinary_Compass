@@ -15,7 +15,7 @@ function Maps({ userLocation }) {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
       style: "mapbox://styles/mapbox/streets-v12",
-      center: [userLocation.longitude, userLocation.latitude], // Use the first restaurant's coordinates as the initial center
+      center: [userLocation.longitude, userLocation.latitude],
       zoom: 10,
     });
 

@@ -14,7 +14,7 @@ export default function ContactUs() {
             draggable: true,
             progress: undefined,
             theme: "colored",
-            });
+        });
     }
 
     function handleClick() {

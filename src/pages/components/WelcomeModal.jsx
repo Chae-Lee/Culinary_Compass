@@ -41,17 +41,17 @@ export default function WelModal() {
                     </div>
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title as="h3" className="text-base font-semibold leading-6 text-gray-900">
-                      Culinary Compass
+                        Culinary Compass
                       </Dialog.Title>
                       <div className="mt-2">
-                        <p className="text-lg text-grey-500 py-2">    
-                        Welcome to Culinary Compass, your passport to global culinary excellence. 
-                        Our elegant website lets you effortlessly discover Michelin-star restaurants worldwide. 
+                        <p className="text-lg text-grey-500 py-2">
+                          Welcome to Culinary Compass, your passport to global culinary excellence.
+                          Our elegant website lets you effortlessly discover Michelin-star restaurants worldwide.
                         </p>
                         <p className='text-lg text-grey-500 py-2'>
-                        Refine your search by cuisine, location, and star rating for a personalized dining adventure. 
-                        From Tokyo to Paris, explore top-notch establishments with sophistication and excitement. 
-                        Culinary Compass invites you to savor unforgettable flavors in a seamless, welcoming experience.
+                          Refine your search by cuisine, location, and star rating for a personalized dining adventure.
+                          From Tokyo to Paris, explore top-notch establishments with sophistication and excitement.
+                          Culinary Compass invites you to savor unforgettable flavors in a seamless, welcoming experience.
                         </p>
                       </div>
                     </div>

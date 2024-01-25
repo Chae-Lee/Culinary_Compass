@@ -1,60 +1,58 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import michelinData from "/src/michelin.json";
 import LoadingIcon from "./LoadingIcon";
 
-export default function MultiResults(props) {
+export default function MultiResults() {
   const [isDataLoading, setIsDataLoading] = useState(true);
   const [filteredMichelinData, setFilteredMichelinData] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedRating, setSelectedRating] = useState("all");
 
-
   useEffect(() => {
     setTimeout(() => {
       setIsDataLoading(false);
-      filterData(selectedCountry, selectedRating);
     }, 2000);
   }, []);
 
-
   useEffect(() => {
     filterData(selectedCountry, selectedRating);
-  }, [selectedCountry, selectedRating]);
-
-
+  }, [selectedCountry, selectedRating, isDataLoading]);
 
   const filterData = (country, rating) => {
-    const filteredData = michelinData.filter((data) => {
-      return (
-        (rating === "all" || data.Award === rating) &&
-        data.Country.toLowerCase().includes(country.toLowerCase())
-      );
-    });
-    setFilteredMichelinData(filteredData);
+    if (!isDataLoading) {
+      const filteredData = michelinData.filter((data) => {
+        return (
+          (rating === "all" || data.Award === rating) &&
+          data.Country.toLowerCase().includes(country.toLowerCase())
+        );
+      });
+      setFilteredMichelinData(filteredData);
+    }
   };
 
+  const handleCountryChange = (event) => {
+    const newCountry = event.target.value;
+    setSelectedCountry(newCountry);
+  };
 
-    const handleCountryChange = (event) => {
-      const newCountry = event.target.value;
-      setSelectedCountry(newCountry);
-    };
+  const handleRatingChange = (event) => {
+    const newRating = event.target.value;
+    setSelectedRating(newRating);
+  };
 
-    const handleRatingChange = (event) => {
-      const newRating = event.target.value;
-      setSelectedRating(newRating);
-    };
-
-
-      if (isDataLoading) {
-        return (
-          <div className="max-h-[750px] pt-48 flex justify-center align-center">
-            <LoadingIcon />
-          </div>
-        );
+  if (isDataLoading) {
+    return (
+      <div className="max-h-[750px] pt-48 flex justify-center align-center">
+        <LoadingIcon />
+      </div>
+    );
   } else {
-      return (
-        <div className="max-h-[750px] overflow-y-auto">
-          <label htmlFor="country" className="bg-indigo-600 h-full w-full">Type Country:</label>
+    return (
+      <>
+        <section>
+          <label htmlFor="country" className="bg-indigo-600 h-full w-full">
+            Type Country:
+          </label>
           <input
             type="text"
             id="country"
@@ -68,16 +66,18 @@ export default function MultiResults(props) {
             onChange={handleRatingChange}
             value={selectedRating}
           >
-
             <option value="all">All</option>
             <option value="1 Star">1 Star</option>
             <option value="2 Stars">2 Stars</option>
             <option value="3 Stars">3 Stars</option>
           </select>
 
-        <ul role="list" className="divide-y divide-gray-100">
-          {filteredMichelinData.map((michelinData) => (
-            <li key={michelinData.ID} className="flex justify-between gap-x-6 py-5">
+          <ul role="list" className="divide-y divide-gray-100">
+            {filteredMichelinData.map((michelinData) => (
+              <li
+                key={michelinData.ID}
+                className="flex justify-between gap-x-6 py-5"
+              >
               <div className="flex min-w-0 gap-x-4">
                 <img className="h-24 w-24 flex-none rounded-md bg-gray-50 object-cover" src={michelinData.CuisineImage} alt="" />
                 <div className="min-w-0 flex-auto">
@@ -94,7 +94,8 @@ export default function MultiResults(props) {
             </li>
           ))}
         </ul>
-      </div>
+        </section>
+        </>
     );
   }
 }

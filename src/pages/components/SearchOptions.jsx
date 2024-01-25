@@ -111,9 +111,9 @@ export default function SearchOptions({
         </Combobox>
       </div>
 
-      <MultiResults
+      {/* <MultiResults
         selectedCountry={selectedCountry}
-        starFilter={filteredMichelinData} />
+        starFilter={filteredMichelinData} /> */}
 
       {/* Below lines commented out for now due to same 'country' term being used */}
       {/* <SingleResultCard

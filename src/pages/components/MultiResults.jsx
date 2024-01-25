@@ -69,7 +69,7 @@ function MultiResults() {
                 value={selectedCountry}
                 onChange={handleCountryChange} />
             </Combobox>
-
+          
             <label className="pt-5">Select Star Rating:</label>
             <select
               id="starRating"
@@ -87,6 +87,7 @@ function MultiResults() {
               <option className="bg-indigo-600" value="3 Stars,Green Star">⭐⭐⭐🍀</option>
               <option className="bg-indigo-600" value="Bib Gourmand,Green Star">🅱️🍀</option>
             </select>
+
           </div>
           <div className="max-h-screen overflow-y-auto">
             <ul role="list" className="divide-y divide-gray-100">

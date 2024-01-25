@@ -31,12 +31,12 @@ function SingleResultCard({ clickEvent, randomRestaurant }) {
     return null;
   }
   return (
-    <div className="relative isolate overflow-hidden bg-white px-6 pb-6 lg:overflow-visible lg:px-0">
+    <div className="relative isolate overflow-hidden bg-white px-6 pb-6 overflow-visible px-0">
 
-      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-2 lg:items-start lg:gap-y-10 shadow-lg rounded-lg">
-        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-1 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 sm:grid-cols-1 lg:gap-x-8 lg:px-8">
-          <div className="lg:pr-4">
-            <div className="lg:max-w-lg col-span-2">
+      <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mx-0 max-w-none grid-cols-2 items-start gap-y-10 shadow-lg rounded-lg">
+        <div className="col-start-1 row-start-1 mx-auto grid w-full max-w-7xl grid-cols-2 sm:grid-cols-1 gap-x-8 px-8">
+          <div className="pr-4">
+            <div className="">
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl pt-4">
                 {randomRestaurant.Name}
               </h3>
@@ -55,14 +55,14 @@ function SingleResultCard({ clickEvent, randomRestaurant }) {
         </div>
         <div className="col-start-2 row-start-1 pt-4">
           <img
-            className="w-[40rem] max-w-none rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[10rem]"
+            className="w-[40rem] rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[10rem]"
             src={randomRestaurant.CuisineImage}
             alt=""
           />
         </div>
-        <div className="lg:col-span-2 lg:col-start-1 lg:row-start-2 lg:mx-auto lg:grid lg:w-full lg:max-w-7xl lg:grid-cols-2 lg:gap-x-8 lg:px-8">
-          <div className="lg:pr-4 col-span-2">
-            <div className="max-w-xl text-sm leading-7 text-gray-700 lg:max-w-lg pb-4">
+        <div className="col-span-2 col-start-1 row-start-2 mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-8 px-8">
+          <div className="pr-4 col-span-2">
+            <div className="max-w-xl text-sm leading-7 text-gray-700 max-w-lg pb-4">
               <p>{randomRestaurant.Description}</p>
             </div>
           </div>

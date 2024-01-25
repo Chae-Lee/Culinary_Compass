@@ -1,22 +1,29 @@
 import { useState, useEffect } from "react";
 import michelinData from "/src/michelin.json";
 import LoadingIcon from "./LoadingIcon";
+import { Combobox } from "@headlessui/react";
 
-export default function MultiResults() {
+function MultiResults() {
+
   const [isDataLoading, setIsDataLoading] = useState(true);
+  
   const [filteredMichelinData, setFilteredMichelinData] = useState([]);
+  
   const [selectedCountry, setSelectedCountry] = useState("");
+  
   const [selectedRating, setSelectedRating] = useState("all");
 
-  useEffect(() => {
-    setTimeout(() => {
-      setIsDataLoading(false);
-    }, 2000);
-  }, []);
+    useEffect(() => {
+      setTimeout(() => {
+        setIsDataLoading(false);
+      }, 2000);
+    }, []);
 
-  useEffect(() => {
-    filterData(selectedCountry, selectedRating);
-  }, [selectedCountry, selectedRating, isDataLoading]);
+
+    useEffect(() => {
+      filterData(selectedCountry, selectedRating);
+    }, [selectedCountry, selectedRating, isDataLoading]);
+
 
   const filterData = (country, rating) => {
     if (!isDataLoading) {
@@ -30,6 +37,7 @@ export default function MultiResults() {
     }
   };
 
+
   const handleCountryChange = (event) => {
     const newCountry = event.target.value;
     setSelectedCountry(newCountry);
@@ -40,6 +48,7 @@ export default function MultiResults() {
     setSelectedRating(newRating);
   };
 
+
   if (isDataLoading) {
     return (
       <div className="max-h-[750px] pt-48 flex justify-center align-center">
@@ -49,17 +58,25 @@ export default function MultiResults() {
   } else {
     return (
       <>
-        <section>
-          <label htmlFor="country" className="bg-indigo-600 h-full w-full">
-            Type Country:
-          </label>
-          <input
+      <div className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-40">
+        <Combobox >
+          <Combobox.Input className="rounded-md bg-indigo-600 h-full w-full"
+            placeholder="Choose a country"
             type="text"
             id="country"
             value={selectedCountry}
-            onChange={handleCountryChange}
-          />
-
+            onChange={handleCountryChange} />
+          {/* <Combobox.Options className="bg-indigo-400">
+            {filteredMichelinData.map((country) => (
+              <Combobox.Option key={country} value={country}>
+                {country}
+              </Combobox.Option>
+            ))}
+          </Combobox.Options> */}
+        </Combobox>
+      </div>
+        <section>
+        
           <label htmlFor="starRating">Select Star Rating:</label>
           <select
             id="starRating"
@@ -71,7 +88,7 @@ export default function MultiResults() {
             <option value="2 Stars">2 Stars</option>
             <option value="3 Stars">3 Stars</option>
           </select>
-        <div className="max-h-96 overflow-y-auto">
+        <div className="max-h-screen overflow-y-auto">
           <ul role="list" className="divide-y divide-gray-100">
             {filteredMichelinData.map((michelinData) => (
               <li
@@ -100,3 +117,19 @@ export default function MultiResults() {
     );
   }
 }
+
+export default MultiResults;
+
+
+// <label htmlFor="country" className="bg-indigo-600 h-full w-full">
+// Type Country:
+// </label>
+// <input
+// type="text"
+// id="country"
+// value={selectedCountry}
+// onChange={handleCountryChange}
+// />
+
+
+// value={selectedCountry} onChange={setSelectedCountry}

@@ -6,8 +6,7 @@ import SingleResultCard from "./components/SingleResultCard";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
-import resultFilter from "../utils/starFilters";
-import FilterDropdown from "./components/FilterDropdown";
+
 
 const randRestaurant = michelinData[randomIndGen(michelinData.length)];
 // Home page.

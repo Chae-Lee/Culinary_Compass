@@ -24,7 +24,6 @@ import randomIndGen from '../../utils/randomIndex';
 //   }
 // }
 
-
 function SingleResultCard({ clickEvent, randomRestaurant }) {
   console.log("Props received:", randomRestaurant);
   const randRestaurant = michelin[randomIndGen(michelin.length)];

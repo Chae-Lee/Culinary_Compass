@@ -6,7 +6,7 @@ import SingleResultCard from "./components/SingleResultCard";
 import michelinData from "../michelin.json";
 import userLocation from "../UserLocation";
 import randomIndGen from "../utils/randomIndex";
-import resultFilter from "../utils/starFilters";
+
 
 const randRestaurant = michelinData[randomIndGen(michelinData.length)];
 // Home page.
@@ -16,10 +16,14 @@ function Home() {
     michelinData[randomIndGen(michelinData.length)]
   );
 
+  const [filteredResults, setFilteredResults] = useState()
+
   const [renderedComponent, setRenderedComponent] =
     useState("SingleResultCard");
 
   // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
+
+
 
   const clickTestButton = (component) => {
     setRenderedComponent(component);
@@ -29,10 +33,6 @@ function Home() {
   const handleClick = (restaurant) => {
     setRestaurant(restaurant);
     console.log();
-  };
-
-  const toggleThreeStars = () => {
-    console.log(resultFilter("Award", "3 Stars"));
   };
 
   return (
@@ -45,7 +45,6 @@ function Home() {
             <SearchOptions
               testButtonClick={clickTestButton}
               clickEvent={() => handleClick("randRestaurant")}
-              toggle3Stars={toggleThreeStars}
             />
             {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
 
@@ -53,12 +52,14 @@ function Home() {
 
             {renderedComponent === "SingleResultCard" ? (
               <SingleResultCard />
-            ) : null}
+              ) : null}
             {renderedComponent === "MultiResults" ? <MultiResults /> : null}
 
-            {/* <MultiResults />
+             <MultiResults 
+             filteredResults={filteredResults}/>
+             
 
-            <SingleResultCard /> */}
+            {/* <SingleResultCard /> */ }
           </div>
         </div>
       </div>
@@ -67,3 +68,16 @@ function Home() {
 }
 
 export default Home;
+
+
+// old code just in case we need it
+// const toggleThreeStars = () => {
+//   if(threeStarToggle){
+//     setThreeStarToggle(!threeStarToggle)
+//     // change name later!!
+//     const list = resultFilter("Award", "3 Stars");
+//     setFilteredResults(list)
+//   } else {
+//     setThreeStarToggle(!threeStarToggle)
+//      }
+// };

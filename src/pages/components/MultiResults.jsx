@@ -5,13 +5,20 @@ import { Combobox } from "@headlessui/react";
 
 function MultiResults() {
 
+  const getUniqueCountries = () => {
+    const countries = new Set(michelinData.map(data => data.Country));
+    return Array.from(countries);
+  };
 
+
+  useEffect(() => {
+    setUniqueCountries(getUniqueCountries());
+  }, []);
+
+  const [uniqueCountries, setUniqueCountries] = useState([]);
   const [isDataLoading, setIsDataLoading] = useState(true);
-
   const [filteredMichelinData, setFilteredMichelinData] = useState([]);
-
   const [selectedCountry, setSelectedCountry] = useState("");
-
   const [selectedRating, setSelectedRating] = useState("all");
 
   useEffect(() => {
@@ -49,7 +56,7 @@ function MultiResults() {
     setSelectedRating(newRating);
   };
 
-  const preventDefault= (e) => {
+  const preventDefault = (e) => {
     e.preventDefault()
   }
 
@@ -71,10 +78,22 @@ function MultiResults() {
                 type="text"
                 id="country"
                 value={selectedCountry}
-                onChange={handleCountryChange} 
-                onSubmit={preventDefault}/>
+                onChange={handleCountryChange}
+                onSubmit={preventDefault} />
+              <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                {uniqueCountries.filter(country =>
+                  country.toLowerCase().includes(selectedCountry.toLowerCase())
+                ).map((country, idx) => (
+                  <Combobox.Option
+                    key={idx}
+                    value={country}
+                    className={({ active }) => `cursor-default select-none relative py-2 pl-10 pr-4 ${active ? 'bg-[#1683d1] text-white' : 'text-gray-900'}`}>
+                    {country}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
             </Combobox>
-          
+
             <label className="pt-5 pr-4">Select Star Rating:</label>
             <select
               id="starRating"

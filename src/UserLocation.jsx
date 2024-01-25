@@ -16,8 +16,8 @@ function UserLocation() {
       console.log("Latitude:", userLocation.latitude);
       console.log("Longitude:", userLocation.longitude);
       //fetching user location and displaying on map
-      const iframeData = document.getElementById("iframeId");
-      iframeData.src = `https://maps.google.com/maps?q=${userLocation.latitude}, ${userLocation.longitude}&h1=es;&output=embed`;
+      const mapDisplay = document.getElementById("mapDisplay");
+      // iframeData.src = `https://maps.google.com/maps?q=${userLocation.latitude}, ${userLocation.longitude}&h1=es;&output=embed`;
     }
   }, [userLocation]);
 
@@ -145,15 +145,13 @@ function UserLocation() {
         </Dialog>
       </Transition.Root>
       {/* <iframe id="iframeId" height="400px" width="600px"></iframe> */}
-      <div id="iframeId">
+      <div id="mapDisplay">
         {userLocation === null ? (
-          <div> Loading... </div>
+          <iframe src="https://lottie.host/embed/84c84485-2a09-445d-82cd-68fca2c8e834/7UamGNvFlM.json"></iframe>
         ) : (
           <Maps userLocation={userLocation} />
         )}
       </div>
-
-      {/* {userLocation && <Maps userLocation={userLocation} />} */}
     </div>
   );
 }

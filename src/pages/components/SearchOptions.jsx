@@ -4,9 +4,8 @@ import michelinData from "../../michelin.json";
 import randomIndGen from "../../utils/randomIndex";
 import SingleResultCard from "./SingleResultCard";
 
-export default function SearchOptions({
-  clickEvent,
-}) {
+
+export default function SearchOptions() {
   const [showUserLocation, setShowUserLocation] = useState(false);
   const [randomRestaurant, setRandomRestaurant] = useState(null); // State to hold the random restaurant
 
@@ -49,10 +48,8 @@ export default function SearchOptions({
 
       <SingleResultCard
         randomRestaurant={randomRestaurant}
-        clickEvent={clickEvent}
       />
 
-      {/* NEAR ME */}
 
       <div className="flex flex-col gap-2 mt-8">
         <button
@@ -63,7 +60,6 @@ export default function SearchOptions({
         </button>
         {showUserLocation && <UserLocation />}
       </div>
-
     </div>
   );
 }

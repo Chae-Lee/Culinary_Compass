@@ -2,7 +2,7 @@ import React from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
-function SingleResultCard({ clickEvent, randomRestaurant }) {
+function SingleResultCard({ randomRestaurant }) {
   const randRestaurant = michelin[randomIndGen(michelin.length)];
   if (!randomRestaurant) {
     return null;

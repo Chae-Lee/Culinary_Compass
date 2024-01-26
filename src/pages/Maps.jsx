@@ -10,7 +10,6 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX;
 
 function Maps({ userLocation }) {
   const mapContainerRef = useRef(null);
-  console.log("in the maps component", userLocation);
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
@@ -43,7 +42,6 @@ function Maps({ userLocation }) {
       const from = [restaurant["Longitude"], restaurant["Latitude"]];
       const distance = turf.distance(to, from, options);
       if (distance < radius) {
-        // console.log(restaurant);
         return restaurant;
       }
     });

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import michelin from '../../michelin.json'
 import randomIndGen from '../../utils/randomIndex';
 
@@ -24,9 +24,6 @@ function SingleResultCard({ randomRestaurant }) {
                 {randomRestaurant.Cuisine}
               </p>
               <img src={randomRestaurant.AwardIcon} alt="" />
-              {/* <p className="mt-6 text-xl leading-8 text-gray-700">
-                Star Rating: {starFunction(randRestaurant)}
-              </p> */}
             </div>
           </div>
         </div>

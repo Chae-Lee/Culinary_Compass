@@ -84,7 +84,7 @@ function MultiResults() {
       </div>
     );
   } else {
-    
+
     // search filter box box and dropdown menu
     return (
       <>

@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function ContactUs() {
-
+    // NPM package for the toast popup once the use sends and email
     const notify = () => {
         toast.success('Sent!', {
             position: "top-center",
@@ -16,7 +16,7 @@ export default function ContactUs() {
             theme: "colored",
         });
     }
-
+// removes the uses data once they submit the form
     function handleClick() {
         const formText = document.getElementById('contactForm')
         formText.reset()

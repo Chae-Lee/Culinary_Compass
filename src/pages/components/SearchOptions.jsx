@@ -1,16 +1,11 @@
 import React, { useEffect, useState } from "react";
 import UserLocation from "../../UserLocation";
 import michelinData from "../../michelin.json";
-import { Combobox } from "@headlessui/react";
-import LoadingIcon from "./LoadingIcon";
 import randomIndGen from "../../utils/randomIndex";
 import SingleResultCard from "./SingleResultCard";
-import MultiResults from "./MultiResults";
 
-export default function SearchOptions({
-  testButtonClick,
-  clickEvent,
-}) {
+
+export default function SearchOptions() {
   const [showUserLocation, setShowUserLocation] = useState(false);
   const [randomRestaurant, setRandomRestaurant] = useState(null); // State to hold the random restaurant
   const [selectedCountry, setSelectedCountry] = useState('') // State to hold country selection, set to empty upon page load.
@@ -79,10 +74,8 @@ export default function SearchOptions({
 
       <SingleResultCard
         randomRestaurant={randomRestaurant}
-        clickEvent={clickEvent}
       />
 
-      {/* NEAR ME */}
 
       <div className="flex flex-col gap-2 mt-8">
         <button
@@ -93,23 +86,6 @@ export default function SearchOptions({
         </button>
         {showUserLocation && <UserLocation />}
       </div>
-
-      {/* Test buttons for showing the correct component */}
-      {/* <div className="flex flex-col gap-4 pt-4">
-        <button
-          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={() => testButtonClick("SingleResultCard")}
-        >
-          Test - Show RestaurantCard
-        </button>
-
-        <button
-          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={() => testButtonClick("MultiResults")}
-        >
-          Test - Show MultiResults
-        </button>
-      </div> */}
     </div>
   );
 }

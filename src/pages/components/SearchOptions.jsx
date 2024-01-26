@@ -1,55 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import UserLocation from "../../UserLocation";
 import michelinData from "../../michelin.json";
-import { Combobox } from "@headlessui/react";
-import LoadingIcon from "./LoadingIcon";
 import randomIndGen from "../../utils/randomIndex";
 import SingleResultCard from "./SingleResultCard";
-import MultiResults from "./MultiResults";
 
 export default function SearchOptions({
-  testButtonClick,
   clickEvent,
 }) {
   const [showUserLocation, setShowUserLocation] = useState(false);
   const [randomRestaurant, setRandomRestaurant] = useState(null); // State to hold the random restaurant
-  const [selectedCountry, setSelectedCountry] = useState('') // State to hold country selection, set to empty upon page load.
-  const [filterTextValue, setFilterTextValue] = useState('')
+
   // Random search code block
   const handleSurpriseMeClick = () => {
     const randRestaurant = michelinData[randomIndGen(michelinData.length)];
-    console.log("Random Restaurant:", randRestaurant);
     setRandomRestaurant(randRestaurant);
   };
-
-  // Country search code block
-  // Create new array of unique country names only from michelin.json data.
-  let countriesData = michelinData.map((
-    { Country }) => (Country));
-  const [countries, setCountries] = useState(countriesData);
-  useEffect(() => {
-    const uniqueCountries = [...new Set(countries)];
-    setCountries(uniqueCountries);
-  }, []);
-  // Allow user to search, ignoring uppercase and lowercase differences.
-  console.log("Selected country =", selectedCountry);
-  const [search, setSearch] = useState('')
-  const filteredCountries =
-    search === ''
-      ? countries
-      : countries.filter((country) => {
-        return country.toLowerCase().includes(search.toLowerCase())
-      })
 
   // Location search code block
   const handleFindNearMeClick = () => {
     setShowUserLocation(true);
   };
-
-
-  function onFilterValueSelected(filterValue) {
-    setFilterTextValue(filterValue)
-  }
 
   return (
     <div className="lg:pr-8 lg:pt-4 rounded-lg shadow-lg p-4 bg-white">
@@ -94,22 +64,6 @@ export default function SearchOptions({
         {showUserLocation && <UserLocation />}
       </div>
 
-      {/* Test buttons for showing the correct component */}
-      {/* <div className="flex flex-col gap-4 pt-4">
-        <button
-          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={() => testButtonClick("SingleResultCard")}
-        >
-          Test - Show RestaurantCard
-        </button>
-
-        <button
-          className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-36"
-          onClick={() => testButtonClick("MultiResults")}
-        >
-          Test - Show MultiResults
-        </button>
-      </div> */}
     </div>
   );
 }

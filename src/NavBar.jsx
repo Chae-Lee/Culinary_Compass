@@ -15,8 +15,6 @@ function classNames(...classes) {
     return classes.filter(Boolean).join(' ')
 }
 
-
-
 function NavBar() {
     return (
     <Disclosure as="nav" className="">

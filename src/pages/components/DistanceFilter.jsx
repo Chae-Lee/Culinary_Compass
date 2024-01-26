@@ -1,5 +1,3 @@
-import React, { useState, useEffect } from "react";
-
 function DistanceFilter() {
   console.log("Distance Filter");
 }

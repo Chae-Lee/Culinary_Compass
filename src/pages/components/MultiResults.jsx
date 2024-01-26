@@ -5,34 +5,49 @@ import { Combobox } from "@headlessui/react";
 
 function MultiResults() {
 
+  // Use state hooks
+
+  // Unique countries state
+  const [uniqueCountries, setUniqueCountries] = useState([]);
+  // loading icon state
+  const [isDataLoading, setIsDataLoading] = useState(true);
+  // filtered JSON state
+  const [filteredMichelinData, setFilteredMichelinData] = useState([]);
+  // user selected country state for filtering options 
+  const [selectedCountry, setSelectedCountry] = useState("");
+  // user selected rating state for filtering options 
+  const [selectedRating, setSelectedRating] = useState("all");
+
+  // function to handle getting countries based on users input
   const getUniqueCountries = () => {
     const countries = new Set(michelinData.map(data => data.Country));
     return Array.from(countries);
   };
+// ==================================================
 
+// Use effect hooks
 
+  // Displays the countries as they are being searched
   useEffect(() => {
     setUniqueCountries(getUniqueCountries());
   }, []);
 
-  const [uniqueCountries, setUniqueCountries] = useState([]);
-  const [isDataLoading, setIsDataLoading] = useState(true);
-  const [filteredMichelinData, setFilteredMichelinData] = useState([]);
-  const [selectedCountry, setSelectedCountry] = useState("");
-  const [selectedRating, setSelectedRating] = useState("all");
-
+  // delay to show the loading animation while data is retrieved
   useEffect(() => {
     setTimeout(() => {
       setIsDataLoading(false);
     }, 2000);
   }, []);
 
-
+// updates the filtered data in the list as the user searches
   useEffect(() => {
     filterData(selectedCountry, selectedRating);
   }, [selectedCountry, selectedRating, isDataLoading]);
+// =======================================================
 
+// event functions 
 
+// filtering the JSON file based on the users choices
   const filterData = (country, rating) => {
     if (!isDataLoading) {
       const filteredData = michelinData.filter((data) => {
@@ -45,7 +60,7 @@ function MultiResults() {
     }
   };
 
-
+// sets state for the country
   const handleCountryChange = (event) => {
     const newCountry = event.target.value;
     setSelectedCountry(newCountry);
@@ -59,8 +74,9 @@ function MultiResults() {
   const preventDefault = (e) => {
     e.preventDefault()
   }
+// ================================================
 
-
+// Checks for the load time to finish and shows animation while rendering
   if (isDataLoading) {
     return (
       <div className="max-h-[750px] pt-48 flex justify-center align-center">
@@ -68,6 +84,8 @@ function MultiResults() {
       </div>
     );
   } else {
+    
+    // search filter box box and dropdown menu
     return (
       <>
         <section className="border-black">
@@ -111,7 +129,9 @@ function MultiResults() {
               <option className="bg-blue-500" value="3 Stars,Green Star">⭐⭐⭐🍀</option>
               <option className="bg-blue-500" value="Bib Gourmand,Green Star">🅱️🍀</option>
             </select>
+          {/* ================================= */}
 
+          {/* Maps list of filtered results */}
           </div>
           <div className="max-h-screen overflow-y-auto">
             <ul role="list" className="divide-y divide-gray-100">
@@ -144,17 +164,3 @@ function MultiResults() {
 }
 
 export default MultiResults;
-
-
-// <label htmlFor="country" className="bg-indigo-600 h-full w-full">
-// Type Country:
-// </label>
-// <input
-// type="text"
-// id="country"
-// value={selectedCountry}
-// onChange={handleCountryChange}
-// />
-
-
-// value={selectedCountry} onChange={setSelectedCountry}

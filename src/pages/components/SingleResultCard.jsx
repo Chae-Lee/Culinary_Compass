@@ -8,10 +8,12 @@ function SingleResultCard({ randomRestaurant }) {
     return null;
   }
   return (
+    // Component Container
     <div className="relative isolate overflow-hidden bg-white px-6 pb-6 overflow-visible px-0">
 
       <div className="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 mx-0 max-w-none grid-cols-2 items-start gap-y-10 shadow-lg rounded-lg">
         <div className="lg:col-start-1 lg:row-start-1 mx-auto grid w-full max-w-7xl lg:grid-cols-2 gap-x-8 px-8 sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-2 sm:col-start-1 sm:col-end-3 sm:row-start-1 sm:row-end-2">
+          {/* Restaurant Details */}
           <div className="pr-4">
             <div className="">
               <h3 className="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl pt-4">
@@ -27,6 +29,7 @@ function SingleResultCard({ randomRestaurant }) {
             </div>
           </div>
         </div>
+        {/* Cuisine Image */}
         <div className="lg:col-start-2 lg:row-start-1 pt-4 sm:col-start-1 sm:col-end-3 sm:row-start-2 sm:row-end-3 sm:px-5 sm:col-start-1 sm:col-end-3 sm:row-start-2 sm:row-end-3 sm:px-5">
           <img
             className="w-[40rem] rounded-xl bg-gray-900 shadow-xl ring-1 ring-gray-400/10 sm:w-[100rem]"
@@ -34,6 +37,7 @@ function SingleResultCard({ randomRestaurant }) {
             alt=""
           />
         </div>
+        {/* Description */}
         <div className="col-span-2 col-start-1 row-start-2 mx-auto grid w-full max-w-7xl grid-cols-2 gap-x-8 px-8 sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-4 sm:col-start-1 sm:col-end-3 sm:row-start-3 sm:row-end-4">
           <div className="pr-4 col-span-2">
             <div className="max-w-xl text-sm leading-7 text-gray-700 max-w-lg pb-4">

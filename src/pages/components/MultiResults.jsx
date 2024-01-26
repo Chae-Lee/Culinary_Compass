@@ -10,7 +10,6 @@ function MultiResults() {
     return Array.from(countries);
   };
 
-
   useEffect(() => {
     setUniqueCountries(getUniqueCountries());
   }, []);
@@ -144,17 +143,3 @@ function MultiResults() {
 }
 
 export default MultiResults;
-
-
-// <label htmlFor="country" className="bg-indigo-600 h-full w-full">
-// Type Country:
-// </label>
-// <input
-// type="text"
-// id="country"
-// value={selectedCountry}
-// onChange={handleCountryChange}
-// />
-
-
-// value={selectedCountry} onChange={setSelectedCountry}

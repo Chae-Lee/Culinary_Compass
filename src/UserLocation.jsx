@@ -10,11 +10,9 @@ function UserLocation() {
   const cancelButtonRef = useRef(null);
   const [userLocation, setUserLocation] = useState(null);
 
-  // useEffect hook used to log user's latitude and longitude to the console whenever userLocation changes. Ensures that console.logs are executed after the state has been updated.
+  // useEffect hook used to log user's latitude and longitudewhenever userLocation changes.
   useEffect(() => {
     if (userLocation && userLocation.latitude && userLocation.longitude) {
-      console.log("Latitude:", userLocation.latitude);
-      console.log("Longitude:", userLocation.longitude);
       //fetching user location and displaying on map
       const mapDisplay = document.getElementById("mapDisplay");
       // iframeData.src = `https://maps.google.com/maps?q=${userLocation.latitude}, ${userLocation.longitude}&h1=es;&output=embed`;
@@ -23,9 +21,6 @@ function UserLocation() {
 
   // Function to check if userLocation is null, if null it calls the getUserLocation function to fetch user's geolocation.
   const handleClick = () => {
-    console.log(
-      "Allow button is clicked - wait couple of seconds for the map to appear"
-    );
     if (!userLocation) {
       getUserLocation();
     }
@@ -34,7 +29,6 @@ function UserLocation() {
 
   // Function called when user does not want to share their geolocation.
   const denyClick = () => {
-    console.log("The user has decided to not share their location");
     alert(
       "You have decided to not share your location. The restaurant results will not be specific to your location"
     );
@@ -54,7 +48,6 @@ function UserLocation() {
         }
       );
     } else {
-      console.error("Geolocation is not supported by this browser");
       setUserLocation(null);
     }
   };
@@ -144,7 +137,6 @@ function UserLocation() {
           </div>
         </Dialog>
       </Transition.Root>
-      {/* <iframe id="iframeId" height="400px" width="600px"></iframe> */}
       <div id="mapDisplay">
         {userLocation === null ? (
           <iframe src="https://lottie.host/embed/84c84485-2a09-445d-82cd-68fca2c8e834/7UamGNvFlM.json"></iframe>

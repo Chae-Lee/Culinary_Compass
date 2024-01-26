@@ -21,13 +21,8 @@ function Home() {
   const [renderedComponent, setRenderedComponent] =
     useState("SingleResultCard");
 
-  // assume we need to adapt the below so it is our search buttons which set the state, rather than the test buttons
-
-
-
   const clickTestButton = (component) => {
     setRenderedComponent(component);
-    console.log(component);
   };
 
   const handleClick = (restaurant) => {
@@ -46,20 +41,10 @@ function Home() {
               testButtonClick={clickTestButton}
               clickEvent={() => handleClick("randRestaurant")}
             />
-            {/* SEARCH RESULTS COMPONENT - need to set up responsiveness */}
+            {/* SEARCH RESULTS COMPONENT */}
 
-            {/* test showing one or the other */}
-
-            {renderedComponent === "SingleResultCard" ? (
-              <SingleResultCard />
-              ) : null}
-            {renderedComponent === "MultiResults" ? <MultiResults /> : null}
-
-             <MultiResults 
-             filteredResults={filteredResults}/>
-             
-
-            {/* <SingleResultCard /> */ }
+            <MultiResults 
+            filteredResults={filteredResults}/>
           </div>
         </div>
       </div>
@@ -68,16 +53,3 @@ function Home() {
 }
 
 export default Home;
-
-
-// old code just in case we need it
-// const toggleThreeStars = () => {
-//   if(threeStarToggle){
-//     setThreeStarToggle(!threeStarToggle)
-//     // change name later!!
-//     const list = resultFilter("Award", "3 Stars");
-//     setFilteredResults(list)
-//   } else {
-//     setThreeStarToggle(!threeStarToggle)
-//      }
-// };

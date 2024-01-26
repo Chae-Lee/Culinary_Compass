@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 function Footer() {
     return (
         <>
-                    {/* <div className="px-2 sm:px-6 lg:px-8"></div> */}
             <div className="max-w-full">
                 <div className="flex items-center justify-between mx-auto w-full h-6 p-4 py-2 px-8 py-8 custom-home">
                     <div>

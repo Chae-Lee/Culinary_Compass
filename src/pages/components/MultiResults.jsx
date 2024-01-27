@@ -88,32 +88,38 @@ function MultiResults() {
     // search filter box box and dropdown menu
     return (
       <>
-        <section className="border-black">
-          <div className=" drop-shadow-md display-flex flex-col justify-center max-h-20 rounded-md bg-[#1683d1] 0 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 w-auto">
-            <Combobox >
-              <Combobox.Input className="rounded-md bg-[#1683d1] h-8 w-full text-white color-white"
-                placeholder="Choose a country"
-                type="text"
-                id="country"
-                value={selectedCountry}
-                onChange={handleCountryChange}
-                onSubmit={preventDefault} />
-              <Combobox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {uniqueCountries.filter(country =>
-                  country.toLowerCase().includes(selectedCountry.toLowerCase())
-                ).map((country, idx) => (
-                  <Combobox.Option
-                    key={idx}
-                    value={country}
-                    className={({ active }) => `cursor-default select-none relative py-2 pl-10 pr-4 ${active ? 'bg-[#1683d1] text-white' : 'text-gray-900'}`}>
-                    {country}
-                  </Combobox.Option>
-                ))}
-              </Combobox.Options>
+        <section>
+          <div className="flex justify-between max-h-20 rounded-md font-semibold 0 text-sm">
+          <label className="mt-1 pr-2 w-auto text-left text-[#1683d1]">Type in a country:</label>
+            <Combobox
+              value={selectedCountry}
+              onChange={setSelectedCountry}>
+                <div className="relative mt-1 w-auto">
+                  <Combobox.Input className="w-auto rounded-md text-left bg-[#1683d1] pl-2 pr-2 mb-1 h-8 lg:mr-20 md:mr-10 sm:mr-5 text-white"
+                    name="Choose a country"
+                    type="text"
+                    id="country"
+                    value={selectedCountry}
+                    onChange={handleCountryChange}
+                    onSubmit={preventDefault} />
+                  <Combobox.Options className="relative mt-1 max-h-60 overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                    {uniqueCountries.filter(country =>
+                      country.toLowerCase().includes(selectedCountry.toLowerCase())
+                    ).map((country, idx) => (
+                      <Combobox.Option
+                        key={idx}
+                        value={country}
+                        className={({ active }) => `cursor-default select-none relative py-2 pl-10 pr-4 ${active ? 'bg-[#1683d1] text-white' : 'text-gray-900'}`}>
+                        {country}
+                      </Combobox.Option>
+                    ))}
+                  </Combobox.Options>
+                </div>
             </Combobox>
 
-            <label className="pt-5 pr-4">Select Star Rating:</label>
+            <label className="mt-1 pr-2 w-auto text-right text-[#1683d1]">Select stars:</label>
             <select
+              className="rounded-md bg-[#1683d1] h-8 w-auto pl-2 text-white"
               id="starRating"
               onChange={handleRatingChange}
               value={selectedRating}>
@@ -129,10 +135,10 @@ function MultiResults() {
               <option className="bg-blue-500" value="3 Stars,Green Star">⭐⭐⭐🍀</option>
               <option className="bg-blue-500" value="Bib Gourmand,Green Star">🅱️🍀</option>
             </select>
+          </div>
           {/* ================================= */}
 
           {/* Maps list of filtered results */}
-          </div>
           <div className="max-h-screen overflow-y-auto">
             <ul role="list" className="divide-y divide-gray-100">
               {filteredMichelinData.map((michelinData) => (
